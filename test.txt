@@ -1,0 +1,1 @@
+test if ssh is working
