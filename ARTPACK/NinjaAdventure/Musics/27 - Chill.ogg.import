@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bneilqeo7gpu5"
+path="res://.godot/imported/27 - Chill.ogg-e1299c1e944e11f0387c0f75a7f7f21a.oggvorbisstr"
+
+[deps]
+
+source_file="res://ARTPACK/NinjaAdventure/Musics/27 - Chill.ogg"
+dest_files=["res://.godot/imported/27 - Chill.ogg-e1299c1e944e11f0387c0f75a7f7f21a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
