@@ -19,7 +19,19 @@ func updateAnimation():
 
 		animations.play("walk" + direction)
 
+func handleCollision():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		print_debug(collider.name)
+
 func _physics_process(delta):
 	handleInput()
 	move_and_slide()
+	handleCollision()
 	updateAnimation()
+
+
+func _on_hurt_box_area_entered(area):
+	if area.name == "hitBox":
+		print_debug(area.get_parent().name)

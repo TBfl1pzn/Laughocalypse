@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3gtgk5r7iw7b"]
+[gd_scene load_steps=11 format=3 uid="uid://b3gtgk5r7iw7b"]
 
 [ext_resource type="PackedScene" uid="uid://cax641s5ihx4o" path="res://player/player.tscn" id="1_jxusk"]
 [ext_resource type="Texture2D" uid="uid://b4w88ewbs2kob" path="res://art/TilesetFloor.png" id="2_044my"]
 [ext_resource type="Texture2D" uid="uid://d1tbv5cp7lcs" path="res://art/TilesetNature.png" id="3_kfjyu"]
 [ext_resource type="Texture2D" uid="uid://cnmaw0821eewn" path="res://art/Animated_Flower.png" id="4_qa7s4"]
 [ext_resource type="Script" path="res://scripts/FollowCam.gd" id="5_3kc7p"]
+[ext_resource type="PackedScene" uid="uid://bqgsfsf8rrkix" path="res://enemies/slime.tscn" id="6_o14v1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8flr"]
 texture = ExtResource("2_044my")
@@ -2790,7 +2791,8 @@ texture = ExtResource("4_qa7s4")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.875, 8, -6.75, -0.375, 6.75, -0.25, 7, 8)
 
 [sub_resource type="TileSet" id="TileSet_vgx7k"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "sand"
 terrain_set_0/terrain_0/color = Color(0.568627, 0.247059, 0.47451, 1)
@@ -2831,3 +2833,27 @@ limit_bottom = 272
 position_smoothing_speed = 2.0
 script = ExtResource("5_3kc7p")
 tilemap = NodePath("../..")
+
+[node name="Enemy" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("6_o14v1")]
+position = Vector2(143, 84)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="TileMap/Enemy"]
+position = Vector2(0, 85)
+
+[node name="Enemy2" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("6_o14v1")]
+position = Vector2(112, 150)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="TileMap/Enemy2"]
+position = Vector2(80, 33)
+
+[node name="Enemy3" parent="TileMap" instance=ExtResource("6_o14v1")]
+position = Vector2(308, 44)
+
+[node name="Enemy4" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("6_o14v1")]
+position = Vector2(183, 105)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="TileMap/Enemy4"]
+position = Vector2(60, -5)
