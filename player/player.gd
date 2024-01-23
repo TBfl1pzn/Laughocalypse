@@ -6,9 +6,19 @@ signal healthChanged
 
 @export var speed: int=35
 @onready var animations = $AnimationPlayer
+@onready var effects = $Effects
+@onready var hurtTimer = $hurtTimer
 
 @export var maxHealth: int = 3
 @onready var currentHealth: int = maxHealth
+
+@export var knockbackPower: int = 500
+
+var isHurt: bool = false
+var enemyCollisions = []
+
+func _ready():
+	effects.play("RESET")
 
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -37,12 +47,33 @@ func _physics_process(delta):
 	move_and_slide()
 	handleCollision()
 	updateAnimation()
+	if !isHurt:
+		for enemyArea in enemyCollisions:
+			hurtByEnemy(enemyArea)
 
+func hurtByEnemy(area):
+	currentHealth -= 1
+	if currentHealth < 0:
+		currentHealth = maxHealth
 
+	healthChanged.emit(currentHealth)
+	isHurt = true
+	knockback(area.get_parent().velocity)
+	effects.play("hurtBlink")
+	hurtTimer.start()
+	await hurtTimer.timeout
+	effects.play("RESET")
+	isHurt = false
+	
 func _on_hurt_box_area_entered(area):
 	if area.name == "hitBox":
-		currentHealth -= 1
-		if currentHealth < 0:
-			currentHealth = maxHealth
+		enemyCollisions.append(area)
 
-		healthChanged.emit(currentHealth)
+func knockback(enemyVelocity):
+	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
+	velocity = knockbackDirection
+	move_and_slide()
+
+
+func _on_hurt_box_area_exited(area):
+	enemyCollisions.erase(area)

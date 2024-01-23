@@ -2827,6 +2827,7 @@ layer_2/tile_data = PackedInt32Array(393222, 1, 0, 196609, 1, 0, 262154, 1, 0, 6
 [node name="player" parent="TileMap" instance=ExtResource("1_jxusk")]
 position = Vector2(116, 69)
 speed = 60
+knockbackPower = 1000
 
 [node name="FollowCam" type="Camera2D" parent="TileMap/player" node_paths=PackedStringArray("tilemap")]
 limit_left = 0
