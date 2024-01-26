@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4jclglqbo4ws"]
 
-[ext_resource type="PackedScene" uid="uid://cw0dcfevi2e2m" path="res://scenes/world.tscn" id="1_384hj"]
-[ext_resource type="PackedScene" uid="uid://bdxc3xmj10gf3" path="res://scenes/player.tscn" id="1_yra78"]
+[ext_resource type="PackedScene" path="res://scenes/world.tscn" id="1_384hj"]
+[ext_resource type="PackedScene" uid="uid://brk6nur78l2kr" path="res://scenes/player.tscn" id="1_yra78"]
 
 [node name="Main" type="Node"]
 
@@ -9,5 +9,6 @@
 
 [node name="Player" parent="World" instance=ExtResource("1_yra78")]
 position = Vector2(196, 126)
+speed = 400
 
 [node name="Camera2D" type="Camera2D" parent="World/Player"]
