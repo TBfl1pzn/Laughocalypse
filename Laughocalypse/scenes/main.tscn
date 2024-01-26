@@ -1,14 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4jclglqbo4ws"]
+[gd_scene load_steps=2 format=3 uid="uid://c4jclglqbo4ws"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_py6dr"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5tcru"]
+[ext_resource type="PackedScene" uid="uid://bdxc3xmj10gf3" path="res://scenes/player.tscn" id="1_yra78"]
 
 [node name="Node" type="Node"]
 
-[node name="Player" type="Area2D" parent="."]
-script = ExtResource("1_py6dr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(173, 130)
-shape = SubResource("CircleShape2D_5tcru")
+[node name="Player" parent="." instance=ExtResource("1_yra78")]
