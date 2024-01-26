@@ -12,6 +12,9 @@ func _ready():
 	feather_spawn = $FeatherSpawn
 	screen_size = get_viewport_rect().size
 
+func handleInput():
+	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	velocity = moveDirection * speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -47,3 +50,7 @@ func shoot():
 	feather_instance.rotation = rotation
 	feather_instance.direction = Vector2(1.0,0.0).rotated(rotation).normalized()
 	get_tree().get_root().call_deferred("add_child", feather_instance)
+	
+func _physics_process(delta):
+	handleInput()
+	move_and_slide()
