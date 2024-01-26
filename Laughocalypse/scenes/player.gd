@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.	
-var feather = 1
-
 var feather_spawn: Marker2D
 @export var feather_scene: PackedScene
 
@@ -40,8 +38,8 @@ func _process(delta):
 	position += velocity * delta
 	
 	if Input.is_action_pressed("shoot"):
-		if feather == 1:
-			feather -= 1
+		if Global.feather_number == 1:
+			Global.feather_number = 0
 			shoot()
 			
 func shoot():
@@ -54,3 +52,5 @@ func shoot():
 func _physics_process(delta):
 	handleInput()
 	move_and_slide()
+	
+

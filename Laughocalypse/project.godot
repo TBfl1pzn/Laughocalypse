@@ -15,6 +15,15 @@ run/main_scene="res:///main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/art/godot_icon.svg"
 
+[autoload]
+
+Global="*res://scenes/global.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
+
 [display]
 
 window/size/viewport_width=240

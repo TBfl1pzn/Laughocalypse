@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx400"]
 size = Vector2(25, 26)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_wl7nx")
 feather_scene = ExtResource("2_ytu8y")
 
@@ -20,4 +20,4 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_1btup")
 
 [node name="FeatherSpawn" type="Marker2D" parent="."]
-position = Vector2(20, 0)
+position = Vector2(27, 0)

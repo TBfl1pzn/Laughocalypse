@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ded88ie0jm0gs" path="res://assets/art/feather_projectile.png" id="2_bdxxr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c7d22"]
+radius = 5.0
 height = 28.0
 
 [node name="FlyingFeather" type="Area2D"]
@@ -14,6 +15,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_c7d22")
 
 [node name="Feather" type="Sprite2D" parent="."]
+position = Vector2(3.55271e-15, 1)
 rotation = 1.5708
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_bdxxr")
@@ -22,4 +24,5 @@ texture = ExtResource("2_bdxxr")
 wait_time = 2.0
 autostart = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
