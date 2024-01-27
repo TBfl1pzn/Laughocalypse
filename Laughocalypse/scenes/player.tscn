@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdxc3xmj10gf3"]
+[gd_scene load_steps=5 format=3 uid="uid://brk6nur78l2kr"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_wl7nx"]
 [ext_resource type="Texture2D" uid="uid://dm0sy3ueyunwq" path="res://assets/art/godot_icon.svg" id="2_1btup"]
+[ext_resource type="PackedScene" uid="uid://g0mvhi4dwno" path="res://scenes/flying_feather.tscn" id="2_ytu8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx400"]
 size = Vector2(25, 26)
@@ -17,8 +18,9 @@ properties/2/path = NodePath(".:clientId")
 properties/2/spawn = true
 properties/2/replication_mode = 2
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_wl7nx")
+feather_scene = ExtResource("2_ytu8y")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
@@ -40,3 +42,6 @@ offset_bottom = -11.0
 [node name="SyncPosTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="FeatherSpawn" type="Marker2D" parent="."]
+position = Vector2(27, 0)
