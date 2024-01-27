@@ -14,7 +14,7 @@ func _process(delta):
 
 
 func addEnemy():
-	var scene = load("res://scenes/enemies/clown1.tscn")
+	var scene = load("res://scenes/enemies/enemy.tscn")
 	var instance = scene.instantiate()
 	instance.position.x = 150
 	instance.position.y = 50
