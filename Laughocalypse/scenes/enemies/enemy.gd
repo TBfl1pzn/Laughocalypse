@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var player: CharacterBody2D
 const speed = 10
 var life = 4
+@onready var audioStreamPlayer: AudioStreamPlayer = $AudioStreamPlayer
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -26,6 +27,7 @@ func _physics_process(delta):
 func _on_hit_box_body_entered(body):
 	if body.name == "FlyingFeather":
 		life -= 1
+		audioStreamPlayer.play()
 	
 	if life <= 0:
 		queue_free()
