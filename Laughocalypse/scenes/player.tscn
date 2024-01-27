@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://brk6nur78l2kr"]
+[gd_scene load_steps=6 format=3 uid="uid://bdxc3xmj10gf3"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_wl7nx"]
 [ext_resource type="Texture2D" uid="uid://dm0sy3ueyunwq" path="res://assets/art/godot_icon.svg" id="2_1btup"]
-[ext_resource type="PackedScene" uid="uid://g0mvhi4dwno" path="res://scenes/flying_feather.tscn" id="2_ytu8y"]
+[ext_resource type="PackedScene" path="res://scenes/flying_feather.tscn" id="2_ytu8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx400"]
 size = Vector2(25, 26)

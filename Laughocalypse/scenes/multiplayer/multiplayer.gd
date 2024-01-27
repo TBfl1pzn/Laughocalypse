@@ -10,12 +10,13 @@ var game = {
 }
 
 var playerNodes = {}
-var playerName = ""
 var myId = ""
 
+
+var characters = 'abcdefghijklmnopqrstuvwxyz'
+var playerName = generate_word(characters, 5)
+
 func _ready():
-	playerName = generate_word(characters, 5)
-	
 	if DisplayServer.get_name() == "headless":
 		var peer = ENetMultiplayerPeer.new()
 		peer.set_bind_ip(ADDRESS)
@@ -29,6 +30,7 @@ func _ready():
 		multiplayer.set_multiplayer_peer(peer)
 		multiplayer.connected_to_server.connect(_on_connected_to_server)
 		myId = str(multiplayer.get_unique_id())
+		
 
 # get called only on client
 func _on_connected_to_server():
@@ -93,8 +95,6 @@ func SendPlayerInformation(name):
 		instance.position.x = 100
 		instance.position.y = 50
 	get_node("/root/Main").add_child(instance)
-
-var characters = 'abcdefghijklmnopqrstuvwxyz'
 
 func generate_word(chars, length):
 	var word: String

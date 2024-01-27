@@ -4,10 +4,6 @@ extends CharacterBody2D
 @export var clientId = 0
 @onready var syncPosTimer: Timer = $SyncPosTimer
 
-func handleInput():
-	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = moveDirection * speed	
-
 func test(name):
 	$Label.text = name
 
