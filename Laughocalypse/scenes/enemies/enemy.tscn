@@ -1,11 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8nbx0ynj8tcn"]
+[gd_scene load_steps=5 format=3 uid="uid://c8nbx0ynj8tcn"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_aa7xi"]
+[ext_resource type="Texture2D" uid="uid://dm0sy3ueyunwq" path="res://assets/art/godot_icon.svg" id="2_7kekb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr4c1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8hkn"]
+radius = 15.0
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_aa7xi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cr4c1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_7kekb")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite"]
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 65.0
+offset_bottom = 65.0
+color = Color(1, 0, 0, 0.454902)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_h8hkn")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var player: CharacterBody2D
 const speed = 10
+var life = 4
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -20,3 +21,11 @@ func _physics_process(delta):
 	velocity = velocity * speed
 
 	move_and_slide()
+
+
+func _on_hit_box_body_entered(body):
+	if body.name == "FlyingFeather":
+		life -= 1
+	
+	if life <= 0:
+		queue_free()
