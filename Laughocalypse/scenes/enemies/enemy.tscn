@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_aa7xi"]
 [ext_resource type="Texture2D" uid="uid://dm0sy3ueyunwq" path="res://assets/art/godot_icon.svg" id="2_7kekb"]
-[ext_resource type="AudioStream" uid="uid://uuflo02fft0d" path="res://assets/sounds/baby-boy-laughing-70651.mp3" id="3_ffatt"]
+[ext_resource type="AudioStream" uid="uid://djyhs82ulu3ia" path="res://assets/sounds/baby-boy-laughing-70651.mp3" id="3_ffatt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr4c1"]
 

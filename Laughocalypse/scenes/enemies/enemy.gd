@@ -4,6 +4,10 @@ extends CharacterBody2D
 const speed = 10
 var life = 4
 @onready var audioStreamPlayer: AudioStreamPlayer = $AudioStreamPlayer
+@onready var hit2: AudioStreamPlayer = $AudioHit2
+@onready var hit3: AudioStreamPlayer = $AudioHit3
+
+
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -27,7 +31,11 @@ func _physics_process(delta):
 func _on_hit_box_body_entered(body):
 	if body.name == "FlyingFeather":
 		life -= 1
-		audioStreamPlayer.play()
-	
-	if life <= 0:
-		queue_free()
+		if life == 3:
+			audioStreamPlayer.play()
+		elif life == 2:
+			hit2.play()
+		elif life == 1:
+			hit3.play()	
+		if life <= 0:
+			queue_free()
