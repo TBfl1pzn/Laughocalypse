@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cn6pkqg2bxrco"]
+
+[node name="Finish" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 11.0
+offset_top = 46.0
+offset_right = 226.0
+offset_bottom = 69.0
+text = "🤡 🔪 🤡 !!! Now look who is 
+laughing !!! 🤡 🔪 🤡"

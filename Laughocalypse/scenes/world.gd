@@ -9,9 +9,9 @@ func _process(delta):
 	pass
 
 func _on_health_change(health):
-	
 	if health == 0:
-		get_tree().paused = true
+		get_tree().change_scene_to_file("res://scenes/finish.tscn")
+		
 	$CanvasLayer/Health/ProgressBar.value = health
 	
 
