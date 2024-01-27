@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhyvoucssger2"]
+
+[ext_resource type="Texture2D" uid="uid://dm0sy3ueyunwq" path="res://assets/art/godot_icon.svg" id="1_px2uy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3culq"]
+size = Vector2(58, 57)
+
+[node name="Enemy" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19, 18.5)
+shape = SubResource("RectangleShape2D_3culq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(19, 19)
+scale = Vector2(0.398438, 0.414062)
+texture = ExtResource("1_px2uy")

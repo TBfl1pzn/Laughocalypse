@@ -25,18 +25,22 @@ func handleInput():
 	var collision_info = move_and_slide()
 	if collision_info:
 		var body_name = get_last_slide_collision().get_collider()
+		print(body_name.name)
 		if body_name.name == "FlyingFeather":
 			Global.feather_number = 1
 			get_tree().call_group("flying_feather", "queue_free")
 	
 
 func shoot():
-	var feather_instance = feather_scene.instantiate()
-	feather_instance.position = feather_spawn.get_global_position()
-	feather_instance.rotation = rotation
-	feather_instance.direction = Vector2(1.0,0.0).rotated(rotation).normalized()
-	get_tree().get_root().call_deferred("add_child", feather_instance)
-	
+	print("shoot")
+	if is_my_client():
+		#var feather_instance = feather_scene.instantiate()
+		var feather_position = feather_spawn.get_global_position()
+		var feather_rotation = rotation
+		var feather_direction = Vector2(1.0,0.0).rotated(rotation).normalized()
+		#get_tree().get_root().call_deferred("add_child", feather_instance)
+		Multiplayer.ShareFeatherPosition.rpc_id(1, feather_direction, feather_rotation, feather_position, clientId)	
+		
 func _physics_process(delta):
 	if is_my_client():
 		handleInput()
@@ -47,13 +51,13 @@ func _process(delta):
 	if is_my_client():
 		look_at(get_global_mouse_position())
 
-	if Input.is_action_pressed("shoot"):
-		if Global.feather_number == 1:
-			Global.feather_number = 0
-			shoot()
+		if Input.is_action_pressed("shoot"):
+			if Global.feather_number == 1:
+				Global.feather_number = 0
+				shoot()
 
 	if is_my_client() and syncPosTimer.is_stopped():
-		Multiplayer.SharePosition.rpc_id(1, position, clientId)	
+		Multiplayer.SharePlayerPosition.rpc_id(1, position, clientId)	
 		syncPosTimer.start()
 
 func is_my_client():

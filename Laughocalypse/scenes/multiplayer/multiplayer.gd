@@ -10,6 +10,7 @@ var game = {
 }
 
 var playerNodes = {}
+var featherNodes = {}
 var myId = ""
 
 
@@ -43,8 +44,21 @@ func _on_peer_connected(id):
 	
 # get called from client on server
 @rpc("any_peer", "reliable")
-func SharePosition(position, clientId):
+func SharePlayerPosition(position, clientId):
 	playerNodes[clientId].position = position
+
+@rpc("any_peer", "reliable")
+func ShareFeatherPosition(direction, rotation, position, clientId):
+	#instance.clientId = multiplayer.get_remote_sender_id()
+	var feather_scene = preload("res://scenes/flying_feather.tscn")
+	var feather_instance = feather_scene.instantiate()
+	feather_instance.position = position
+	feather_instance.rotation = rotation
+	feather_instance.direction = direction
+	get_node("/root/Main/World").add_child(feather_instance, true)
+	featherNodes[clientId] = feather_instance
+	#featherNodes[clientId].position = instance.position
+	
 
 # get called from client on server
 @rpc("any_peer", "reliable")
