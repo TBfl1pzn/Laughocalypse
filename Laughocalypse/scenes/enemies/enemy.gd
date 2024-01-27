@@ -3,11 +3,24 @@ extends CharacterBody2D
 @export var player: CharacterBody2D
 const speed = 25
 var life = 4
+var life_animation_weight = {
+	4: "",
+	3: "",
+	2: "_medium",
+	1: "_heavy",
+	0: "", # Workaround to not get a nullpointer on a dead clown
+}
 @onready var hit1: AudioStreamPlayer = $AudioHit1
 @onready var hit2: AudioStreamPlayer = $AudioHit2
 @onready var hit3: AudioStreamPlayer = $AudioHit3
+@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
-
+func _process(delta):
+	
+	if velocity.x > 0:
+		animationPlayer.play("walk_right" + life_animation_weight[life])
+	else:
+		animationPlayer.play("walk_left" + life_animation_weight[life])
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.

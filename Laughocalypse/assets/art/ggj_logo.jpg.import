@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3btc45k7xfil"
-path="res://.godot/imported/Animation sheet.png-5492d31ab23648072bfef3b38cc700b6.ctex"
+uid="uid://6b1dedigr8ec"
+path="res://.godot/imported/ggj_logo.jpg-48af915e7c6b6ed8efc5ad3d78cdf7cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/Animation sheet.png"
-dest_files=["res://.godot/imported/Animation sheet.png-5492d31ab23648072bfef3b38cc700b6.ctex"]
+source_file="res://assets/art/ggj_logo.jpg"
+dest_files=["res://.godot/imported/ggj_logo.jpg-48af915e7c6b6ed8efc5ad3d78cdf7cc.ctex"]
 
 [params]
 
