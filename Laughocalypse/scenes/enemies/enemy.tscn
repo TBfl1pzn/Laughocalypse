@@ -11,7 +11,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8hkn"]
 radius = 15.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_aa7xi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

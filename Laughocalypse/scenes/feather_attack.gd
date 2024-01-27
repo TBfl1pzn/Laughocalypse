@@ -12,18 +12,18 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("hit") and Global.feather_number == 1 and attack_cooldown.is_stopped():
-		print("process")
 		attack_cooldown.start()
 		for i in enemies_in_area:
 			i.hit()
 
 func _on_body_entered(body):
-	print(body.name)
-	if body.name == "Enemy":
+	if body.is_in_group("enemy"):
 		enemies_in_area.append(body)
 
 func _on_body_exited(body):
-	if body.name == "Enemy":
-		for i in len(enemies_in_area):
-			if enemies_in_area[i] == body:
-				enemies_in_area.remove_at(i)
+	if body.is_in_group("enemy"):
+		var count_up = 0
+		for i in enemies_in_area:
+			if i == body:
+				enemies_in_area.remove_at(count_up)
+				count_up += 1
