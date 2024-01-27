@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export var player: CharacterBody2D
-const speed = 10
+const speed = 25
 var life = 4
-@onready var audioStreamPlayer: AudioStreamPlayer = $AudioStreamPlayer
+@onready var hit1: AudioStreamPlayer = $AudioHit1
 @onready var hit2: AudioStreamPlayer = $AudioHit2
 @onready var hit3: AudioStreamPlayer = $AudioHit3
 
@@ -30,7 +30,12 @@ func _physics_process(delta):
 func hit():
 	print("hit")
 	life -= 1
-	
+	if life == 3:
+		hit1.play()
+	elif life == 2:
+		hit2.play()
+	elif life == 1:
+		hit3.play()	
 	if life <= 0:
 		queue_free()
 
@@ -38,12 +43,4 @@ func _on_hit_box_body_entered(body):
 	print(body.name)
 	print(body.is_in_group("feather_attack"))
 	if body.name == "FlyingFeather":
-		life -= 1
-		if life == 3:
-			audioStreamPlayer.play()
-		elif life == 2:
-			hit2.play()
-		elif life == 1:
-			hit3.play()	
-		if life <= 0:
-			queue_free()
+		hit()

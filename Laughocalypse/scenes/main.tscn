@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://20vxqkppv0wt" path="res://scenes/world.tscn" id="1_384hj"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_swm2d"]
 [ext_resource type="PackedScene" uid="uid://brk6nur78l2kr" path="res://scenes/player.tscn" id="1_yra78"]
-[ext_resource type="PackedScene" uid="uid://uv6xv3qyyq3w" path="res://scenes/enemies/clown1.tscn" id="3_1cldx"]
+[ext_resource type="PackedScene" uid="uid://c8nbx0ynj8tcn" path="res://scenes/enemies/enemy.tscn" id="3_1cldx"]
 [ext_resource type="Script" path="res://scenes/counter.gd" id="3_vj632"]
 [ext_resource type="FontFile" uid="uid://dpnh6moqx6x8e" path="res://assets/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf" id="4_tb6me"]
 
@@ -19,14 +19,15 @@ script = ExtResource("1_swm2d")
 position = Vector2(196, 126)
 
 [node name="Camera2D" type="Camera2D" parent="World/Player"]
+zoom = Vector2(0.5, 0.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
 [node name="Counter" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 7.0
-offset_top = 2.0
-offset_right = 51.0
-offset_bottom = 36.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 45.0
+offset_bottom = 11.0
 script = ExtResource("3_vj632")
 
 [node name="RichTextLabel" type="Label" parent="World/CanvasLayer/Counter"]
@@ -36,6 +37,7 @@ theme_override_font_sizes/font_size = 9
 
 [node name="Timer" type="Timer" parent="World/CanvasLayer/Counter"]
 wait_time = 10.0
+one_shot = true
 
 [node name="Health" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 296.0
