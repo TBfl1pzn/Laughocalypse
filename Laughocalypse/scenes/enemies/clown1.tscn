@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://uv6xv3qyyq3w"]
+
+[ext_resource type="PackedScene" uid="uid://c8nbx0ynj8tcn" path="res://scenes/enemies/enemy.tscn" id="1_4of26"]
+[ext_resource type="Texture2D" uid="uid://dm0sy3ueyunwq" path="res://assets/art/godot_icon.svg" id="2_f4ssx"]
+
+[node name="Enemy" instance=ExtResource("1_4of26")]
+
+[node name="Sprite" type="Sprite2D" parent="." index="1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_f4ssx")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite" index="0"]
+clip_contents = true
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 65.0
+offset_bottom = 65.0
+color = Color(1, 0, 0, 0.388235)
