@@ -32,6 +32,12 @@ func shoot():
 	
 func _physics_process(delta):
 	handleInput()
-	move_and_slide()
+
+	var collision_info = move_and_slide()
+	if collision_info:
+		var body_name = get_last_slide_collision().get_collider()
+		if body_name.name == "FlyingFeather":
+			Global.feather_number = 1
+			get_tree().call_group("flying_feather", "queue_free")
 	
 
