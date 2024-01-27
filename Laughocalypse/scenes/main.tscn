@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4jclglqbo4ws"]
+[gd_scene load_steps=5 format=3 uid="uid://c4jclglqbo4ws"]
 
 [ext_resource type="PackedScene" uid="uid://20vxqkppv0wt" path="res://scenes/world.tscn" id="1_384hj"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_swm2d"]
 [ext_resource type="PackedScene" uid="uid://brk6nur78l2kr" path="res://scenes/player.tscn" id="1_yra78"]
+[ext_resource type="PackedScene" uid="uid://uv6xv3qyyq3w" path="res://scenes/enemies/clown1.tscn" id="3_1cldx"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_swm2d")
 
 [node name="World" parent="." instance=ExtResource("1_384hj")]
 
@@ -11,3 +14,7 @@
 position = Vector2(196, 126)
 
 [node name="Camera2D" type="Camera2D" parent="World/Player"]
+
+[node name="Enemy" parent="World" node_paths=PackedStringArray("player") instance=ExtResource("3_1cldx")]
+position = Vector2(281, 61)
+player = NodePath("../Player")
