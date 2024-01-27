@@ -19,6 +19,7 @@ script = ExtResource("1_swm2d")
 position = Vector2(196, 126)
 
 [node name="Camera2D" type="Camera2D" parent="World/Player"]
+zoom = Vector2(0.5, 0.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
