@@ -39,7 +39,7 @@ theme_override_fonts/font = SubResource("FontVariation_0yiep")
 theme_override_font_sizes/font_size = 9
 
 [node name="Timer" type="Timer" parent="World/CanvasLayer/Counter"]
-wait_time = 5.0
+wait_time = 7.0
 one_shot = true
 
 [node name="Health" type="MarginContainer" parent="World/CanvasLayer"]

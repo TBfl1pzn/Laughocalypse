@@ -2,7 +2,7 @@ extends MarginContainer
 
 @onready var label = $RichTextLabel
 @onready var timer = $Timer
-var countdown = 5
+var countdown = 7
 
 func _ready():
 	timer.start()
@@ -18,7 +18,7 @@ func _on_timer_timeout():
 	$"../../".addEnemy()
 	timer.start(countdown)
 	
-	if (countdown > 1):
+	if (countdown > 2):
 		countdown = countdown - 1
 	
 func _process(delta):

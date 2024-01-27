@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7p5cw6s73ewr"]
+[gd_scene load_steps=3 format=3 uid="uid://dehssd52qfre6"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_mgvki"]
 [ext_resource type="FontFile" uid="uid://dpnh6moqx6x8e" path="res://assets/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf" id="2_n20wk"]
