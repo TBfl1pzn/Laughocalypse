@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://uv6xv3qyyq3w"]
 
 [ext_resource type="PackedScene" uid="uid://c8nbx0ynj8tcn" path="res://scenes/enemies/enemy.tscn" id="1_4of26"]
-[ext_resource type="AudioStream" uid="uid://dmpn7qc7vrbx" path="res://assets/sounds/baby-laughter2-15231.mp3" id="2_kcycl"]
-[ext_resource type="AudioStream" uid="uid://b8811lwmnkwai" path="res://assets/sounds/child-laughing-90664.mp3" id="3_xjwpk"]
-[ext_resource type="AudioStream" uid="uid://dal7rhxy8roj1" path="res://assets/sounds/evil-laugh-49831.mp3" id="4_su5u3"]
+[ext_resource type="AudioStream" uid="uid://c6s3vvajmc6fr" path="res://assets/sounds/baby-laughter2-15231.mp3" id="2_kcycl"]
+[ext_resource type="AudioStream" uid="uid://bhj57x2lrt6e7" path="res://assets/sounds/child-laughing-90664.mp3" id="3_xjwpk"]
+[ext_resource type="AudioStream" uid="uid://bqd0frpiys7t3" path="res://assets/sounds/evil-laugh-49831.mp3" id="4_su5u3"]
 
 [node name="Enemy" instance=ExtResource("1_4of26")]
 
