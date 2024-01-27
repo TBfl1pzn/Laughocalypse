@@ -21,8 +21,8 @@ Multiplayer="*res://scenes/multiplayer/multiplayer.gd"
 
 [display]
 
-window/size/viewport_width=240
-window/size/viewport_height=135
+window/size/viewport_width=600
+window/size/viewport_height=600
 window/size/window_width_override=1000
 window/size/window_height_override=640
 window/stretch/mode="canvas_items"

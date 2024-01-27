@@ -8,42 +8,85 @@ const MAX_CONNECTIONS = 100
 var game = {
 	"players": {}
 }
-var myId = 0
-var name2 = ""
+
+var playerName = ""
+var myId = ""
 
 func _ready():
+	playerName = generate_word(characters, 5)
+	
 	if DisplayServer.get_name() == "headless":
 		var peer = ENetMultiplayerPeer.new()
 		peer.set_bind_ip(ADDRESS)
 		var error = peer.create_server(PORT, MAX_CONNECTIONS)
 		multiplayer.set_multiplayer_peer(peer)
 		print("started the server on port " + str(PORT))
-		name2 = generate_word(characters, 5)
 		multiplayer.peer_connected.connect(_on_peer_connected)
-		print("wtfwtf")
 	else:
 		var peer = ENetMultiplayerPeer.new()
 		var error = peer.create_client(ADDRESS, PORT)
 		multiplayer.set_multiplayer_peer(peer)
-		myId = peer.get_unique_id()
-		name2 = generate_word(characters, 5)
 		multiplayer.connected_to_server.connect(_on_connected_to_server)
-		print("wtf")
+		myId = str(multiplayer.get_unique_id())
 
+# get called only on client
 func _on_connected_to_server():
-	print("ja")
-	#SendPlayerInformation.rpc_id(id, name2)
+	print("connected to server")
+	print(myId)
+	print("ooooooooo")
+	RegisterPlayer.rpc_id(1, playerName)
 
-# get called on server
+# get called on server but not needed as we trigger from client the connect
 func _on_peer_connected(id):
-	print(id)
-	#SendPlayerInformation.rpc_id(id, name2)
-
+	pass
+	
+# get called from client on server
 @rpc("any_peer", "reliable")
+func Test(position, clientId):
+	for i in get_node("/root/Main/World").get_children():
+		if (i.name == "Player" and i.clientId == clientId):
+			i.position = position
+	
+# get called from client on server
+@rpc("any_peer", "reliable")
+func RegisterPlayer(name):
+	print("add "+name + " as " + str(multiplayer.get_remote_sender_id()))	
+	game.players[multiplayer.get_remote_sender_id()] = name
+
+	var scene = load("res://scenes/player.tscn")
+	var instance = scene.instantiate()
+	instance.test(name)
+	instance.clientId = multiplayer.get_remote_sender_id()
+	get_node("/root/Main/World").add_child(instance, true)
+	
+	
+	
+	
+	
+	if game.players.size() > 1:
+		instance.position.x = 100
+		instance.position.y = 100
+	else:
+		instance.position.x = 200
+		instance.position.y = 200
+	
+	RegisterPlayerOnClient.rpc(game)
+	
+
+
+# get called from server on client
+@rpc("authority")
+func RegisterPlayerOnClient(gameFromServer):
+	print("update " + str(multiplayer.get_unique_id()))	
+	game = gameFromServer
+	
+
+	
+@rpc("authority")
 func SendPlayerInformation(name):
 	game.players[multiplayer.get_remote_sender_id()] = name
 
-	print("" + str(multiplayer.get_remote_sender_id()) + " called " + str(myId) + "to add " +  name)
+	#print("" + str(multiplayer.get_remote_sender_id()) + " called " + str(myId) + "to add " +  name)
 	var scene = load("res://scenes/player.tscn")
 	var instance = scene.instantiate()
 	if game.players.size() > 1:
