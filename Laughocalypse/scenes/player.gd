@@ -53,7 +53,7 @@ func _process(delta):
 			shoot()
 
 	if is_my_client() and syncPosTimer.is_stopped():
-		Multiplayer.Test.rpc_id(1, position, clientId)	
+		Multiplayer.SharePosition.rpc_id(1, position, clientId)	
 		syncPosTimer.start()
 
 func is_my_client():

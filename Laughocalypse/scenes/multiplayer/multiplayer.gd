@@ -43,9 +43,9 @@ func _on_peer_connected(id):
 	
 # get called from client on server
 @rpc("any_peer", "reliable")
-func Test(position, clientId):
+func SharePosition(position, clientId):
 	playerNodes[clientId].position = position
-	
+
 # get called from client on server
 @rpc("any_peer", "reliable")
 func RegisterPlayer(name):
@@ -58,21 +58,15 @@ func RegisterPlayer(name):
 	instance.clientId = multiplayer.get_remote_sender_id()
 	get_node("/root/Main/World").add_child(instance, true)
 	playerNodes[instance.clientId] = instance
-	
-	
-	
-	
-	
+
 	if game.players.size() > 1:
 		instance.position.x = 100
 		instance.position.y = 100
 	else:
 		instance.position.x = 50
 		instance.position.y = 50
-	
-	RegisterPlayerOnClient.rpc(game)
-	
 
+	RegisterPlayerOnClient.rpc(game)
 
 # get called from server on client
 @rpc("authority")
