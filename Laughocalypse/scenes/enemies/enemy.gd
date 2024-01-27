@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var player: CharacterBody2D
-const speed = 10
+const speed = 25
 var life = 4
 @onready var hit1: AudioStreamPlayer = $AudioHit1
 @onready var hit2: AudioStreamPlayer = $AudioHit2
