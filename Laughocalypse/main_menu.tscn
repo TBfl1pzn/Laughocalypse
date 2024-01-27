@@ -20,10 +20,10 @@ color = Color(1, 0.0705882, 1, 1)
 
 [node name="TitleContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 3.0
-offset_right = 188.0
-offset_bottom = 22.0
+offset_left = 62.0
+offset_top = 7.0
+offset_right = 189.0
+offset_bottom = 26.0
 
 [node name="Title" type="Label" parent="TitleContainer"]
 layout_mode = 2
@@ -33,9 +33,9 @@ text = "Laughocalypse"
 [node name="SubtitleContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = 31.0
-offset_top = 9.0
+offset_top = 15.0
 offset_right = 309.0
-offset_bottom = 45.0
+offset_bottom = 51.0
 
 [node name="Subtitle" type="Label" parent="SubtitleContainer"]
 layout_mode = 2
@@ -47,9 +47,9 @@ text = "The Ultimate Laughter Showdown
 [node name="MenuContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = 92.0
-offset_top = 41.0
+offset_top = 51.0
 offset_right = 162.0
-offset_bottom = 142.0
+offset_bottom = 152.0
 scale = Vector2(0.8, 0.8)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer"]

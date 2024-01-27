@@ -6,6 +6,8 @@ var feather_spawn: Marker2D
 var health = 100
 @export var feather_scene: PackedScene
 
+signal health_changed(health)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	feather_spawn = $FeatherSpawn
@@ -37,12 +39,14 @@ func _physics_process(delta):
 	var collision_info = move_and_slide()
 	if collision_info:
 		var body_name = get_last_slide_collision().get_collider()
+		
+		if body_name.is_in_group("enemy"):
+			health = health - 1
+			health_changed.emit(health)
+		
 		if body_name.name == "FlyingFeather":
 			Global.feather_number = 1
 			get_tree().call_group("flying_feather", "queue_free")
-	
-
-
 
 func _on_feather_attack_body_entered(body):
 	pass # Replace with function body.

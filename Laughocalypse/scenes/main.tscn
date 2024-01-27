@@ -52,7 +52,6 @@ offset_bottom = 41.0
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_rj5cy")
 theme_override_font_sizes/font_size = 10
-min_value = 100.0
 step = 1.0
 value = 100.0
 
