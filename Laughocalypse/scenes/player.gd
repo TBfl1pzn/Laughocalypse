@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed = 100 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.	
 var feather_spawn: Marker2D
+var health = 100
 @export var feather_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.

@@ -2,7 +2,7 @@ extends MarginContainer
 
 @onready var label = $RichTextLabel
 @onready var timer = $Timer
-var countdown = 10
+var countdown = 5
 
 func _ready():
 	timer.start()

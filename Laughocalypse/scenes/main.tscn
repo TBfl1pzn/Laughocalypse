@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4jclglqbo4ws"]
+[gd_scene load_steps=9 format=3 uid="uid://c4jclglqbo4ws"]
 
 [ext_resource type="PackedScene" uid="uid://20vxqkppv0wt" path="res://scenes/world.tscn" id="1_384hj"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_swm2d"]
@@ -8,6 +8,9 @@
 [ext_resource type="FontFile" uid="uid://dpnh6moqx6x8e" path="res://assets/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf" id="4_tb6me"]
 
 [sub_resource type="FontVariation" id="FontVariation_0yiep"]
+base_font = ExtResource("4_tb6me")
+
+[sub_resource type="FontVariation" id="FontVariation_rj5cy"]
 base_font = ExtResource("4_tb6me")
 
 [node name="Main" type="Node"]
@@ -36,16 +39,19 @@ theme_override_fonts/font = SubResource("FontVariation_0yiep")
 theme_override_font_sizes/font_size = 9
 
 [node name="Timer" type="Timer" parent="World/CanvasLayer/Counter"]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="Health" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 296.0
-offset_right = 336.0
-offset_bottom = 40.0
+offset_left = 199.0
+offset_top = 1.0
+offset_right = 239.0
+offset_bottom = 41.0
 
 [node name="ProgressBar" type="ProgressBar" parent="World/CanvasLayer/Health"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_rj5cy")
+theme_override_font_sizes/font_size = 10
 min_value = 100.0
 step = 1.0
 value = 100.0
