@@ -1,19 +1,14 @@
-
-[gd_scene load_steps=6 format=3 uid="uid://c4jclglqbo4ws"]
-[gd_scene load_steps=5 format=3 uid="uid://c4jclglqbo4ws"]
-
+[gd_scene load_steps=8 format=3 uid="uid://c4jclglqbo4ws"]
 
 [ext_resource type="PackedScene" uid="uid://20vxqkppv0wt" path="res://scenes/world.tscn" id="1_384hj"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_swm2d"]
 [ext_resource type="PackedScene" uid="uid://brk6nur78l2kr" path="res://scenes/player.tscn" id="1_yra78"]
-
+[ext_resource type="PackedScene" uid="uid://uv6xv3qyyq3w" path="res://scenes/enemies/clown1.tscn" id="3_1cldx"]
 [ext_resource type="Script" path="res://scenes/counter.gd" id="3_vj632"]
 [ext_resource type="FontFile" uid="uid://dpnh6moqx6x8e" path="res://assets/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf" id="4_tb6me"]
 
 [sub_resource type="FontVariation" id="FontVariation_0yiep"]
 base_font = ExtResource("4_tb6me")
-
-[ext_resource type="PackedScene" uid="uid://uv6xv3qyyq3w" path="res://scenes/enemies/clown1.tscn" id="3_1cldx"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_swm2d")
@@ -25,29 +20,29 @@ position = Vector2(196, 126)
 
 [node name="Camera2D" type="Camera2D" parent="World/Player"]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="World"]
+[node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
-[node name="Counter" type="MarginContainer" parent="World/CanvasLayer2"]
+[node name="Counter" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 7.0
 offset_top = 2.0
 offset_right = 51.0
 offset_bottom = 36.0
 script = ExtResource("3_vj632")
 
-[node name="RichTextLabel" type="Label" parent="World/CanvasLayer2/Counter"]
+[node name="RichTextLabel" type="Label" parent="World/CanvasLayer/Counter"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_0yiep")
 theme_override_font_sizes/font_size = 9
 
-[node name="Timer" type="Timer" parent="World/CanvasLayer2/Counter"]
+[node name="Timer" type="Timer" parent="World/CanvasLayer/Counter"]
 wait_time = 10.0
 
-[node name="Health" type="MarginContainer" parent="World/CanvasLayer2"]
+[node name="Health" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 296.0
 offset_right = 336.0
 offset_bottom = 40.0
 
-[node name="ProgressBar" type="ProgressBar" parent="World/CanvasLayer2/Health"]
+[node name="ProgressBar" type="ProgressBar" parent="World/CanvasLayer/Health"]
 layout_mode = 2
 min_value = 100.0
 step = 1.0

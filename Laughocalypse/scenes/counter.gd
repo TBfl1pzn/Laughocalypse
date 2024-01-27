@@ -3,7 +3,6 @@ extends MarginContainer
 @onready var label = $RichTextLabel
 @onready var timer = $Timer
 
-
 func _ready():
 	timer.start()
 	timer.timeout.connect(_on_timer_timeout)
@@ -15,10 +14,8 @@ func time_left_to_live():
 	return [minute, second]
 	
 func _on_timer_timeout():
-	# spawn enemy here
-	print(123)
-	
+	$"../../".addEnemy()
 	
 func _process(delta):
-	label.text = "%02d:%02d for next wave to spawn" % time_left_to_live()
+	label.text = "Next enemy in %02d:%02d!" % time_left_to_live()
 	
