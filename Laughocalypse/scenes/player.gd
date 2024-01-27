@@ -14,6 +14,9 @@ var feather_spawn: Marker2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	feather_spawn = $FeatherSpawn
+	if is_my_client():
+		var camera = Camera2D.new()
+		add_child(camera)
 
 func handleInput():
 	var moveDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -35,22 +38,24 @@ func shoot():
 	get_tree().get_root().call_deferred("add_child", feather_instance)
 	
 func _physics_process(delta):
-	if (!Multiplayer.multiplayer.is_server()
-		and Multiplayer.multiplayer.get_unique_id() == clientId):
+	if is_my_client():
 		handleInput()
 		
 	move_and_slide()
 	
 func _process(delta):
-	look_at(get_global_mouse_position())
+	if is_my_client():
+		look_at(get_global_mouse_position())
 
 	if Input.is_action_pressed("shoot"):
 		if Global.feather_number == 1:
 			Global.feather_number = 0
 			shoot()
 
-	if (!Multiplayer.multiplayer.is_server()
-		and Multiplayer.multiplayer.get_unique_id() == clientId
-		and syncPosTimer.is_stopped()):
+	if is_my_client() and syncPosTimer.is_stopped():
 		Multiplayer.Test.rpc_id(1, position, clientId)	
 		syncPosTimer.start()
+
+func is_my_client():
+	return (!Multiplayer.multiplayer.is_server()
+		and Multiplayer.multiplayer.get_unique_id() == clientId)

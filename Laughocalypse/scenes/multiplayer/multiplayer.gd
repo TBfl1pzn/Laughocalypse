@@ -18,6 +18,7 @@ var playerName = generate_word(characters, 5)
 
 func _ready():
 	if DisplayServer.get_name() == "headless":
+		# Runs on the server
 		var peer = ENetMultiplayerPeer.new()
 		peer.set_bind_ip(ADDRESS)
 		var error = peer.create_server(PORT, MAX_CONNECTIONS)
@@ -25,12 +26,12 @@ func _ready():
 		print("started the server on port " + str(PORT))
 		multiplayer.peer_connected.connect(_on_peer_connected)
 	else:
+		# Runs on the client
 		var peer = ENetMultiplayerPeer.new()
 		var error = peer.create_client(ADDRESS, PORT)
 		multiplayer.set_multiplayer_peer(peer)
 		multiplayer.connected_to_server.connect(_on_connected_to_server)
 		myId = str(multiplayer.get_unique_id())
-		
 
 # get called only on client
 func _on_connected_to_server():
