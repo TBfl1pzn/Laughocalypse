@@ -6,8 +6,13 @@ var life = 4
 @onready var hit1: AudioStreamPlayer = $AudioHit1
 @onready var hit2: AudioStreamPlayer = $AudioHit2
 @onready var hit3: AudioStreamPlayer = $AudioHit3
+@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
-
+func _process(delta):
+	if velocity.x > 0:
+		animationPlayer.play("walk_right")
+	else:
+		animationPlayer.play("walk_left")
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
