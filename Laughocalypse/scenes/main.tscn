@@ -23,10 +23,10 @@ position = Vector2(196, 126)
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
 [node name="Counter" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 7.0
-offset_top = 2.0
-offset_right = 51.0
-offset_bottom = 36.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 45.0
+offset_bottom = 11.0
 script = ExtResource("3_vj632")
 
 [node name="RichTextLabel" type="Label" parent="World/CanvasLayer/Counter"]
@@ -36,6 +36,7 @@ theme_override_font_sizes/font_size = 9
 
 [node name="Timer" type="Timer" parent="World/CanvasLayer/Counter"]
 wait_time = 10.0
+one_shot = true
 
 [node name="Health" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 296.0
