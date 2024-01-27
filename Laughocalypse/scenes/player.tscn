@@ -8,7 +8,7 @@ size = Vector2(25, 26)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wl2pm"]
 properties/0/path = NodePath(".:position")
-properties/0/spawn = true
+properties/0/spawn = false
 properties/0/replication_mode = 2
 properties/1/path = NodePath("Label:text")
 properties/1/spawn = true
@@ -23,7 +23,6 @@ script = ExtResource("1_wl7nx")
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_bx400")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -37,3 +36,7 @@ offset_left = -17.0
 offset_top = -34.0
 offset_right = 23.0
 offset_bottom = -11.0
+
+[node name="SyncPosTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

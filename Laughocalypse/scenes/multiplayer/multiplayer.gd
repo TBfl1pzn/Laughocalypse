@@ -9,6 +9,7 @@ var game = {
 	"players": {}
 }
 
+var playerNodes = {}
 var playerName = ""
 var myId = ""
 
@@ -31,9 +32,6 @@ func _ready():
 
 # get called only on client
 func _on_connected_to_server():
-	print("connected to server")
-	print(myId)
-	print("ooooooooo")
 	RegisterPlayer.rpc_id(1, playerName)
 
 # get called on server but not needed as we trigger from client the connect
@@ -43,9 +41,7 @@ func _on_peer_connected(id):
 # get called from client on server
 @rpc("any_peer", "reliable")
 func Test(position, clientId):
-	for i in get_node("/root/Main/World").get_children():
-		if (i.name == "Player" and i.clientId == clientId):
-			i.position = position
+	playerNodes[clientId].position = position
 	
 # get called from client on server
 @rpc("any_peer", "reliable")
@@ -58,6 +54,7 @@ func RegisterPlayer(name):
 	instance.test(name)
 	instance.clientId = multiplayer.get_remote_sender_id()
 	get_node("/root/Main/World").add_child(instance, true)
+	playerNodes[instance.clientId] = instance
 	
 	
 	
@@ -67,8 +64,8 @@ func RegisterPlayer(name):
 		instance.position.x = 100
 		instance.position.y = 100
 	else:
-		instance.position.x = 200
-		instance.position.y = 200
+		instance.position.x = 50
+		instance.position.y = 50
 	
 	RegisterPlayerOnClient.rpc(game)
 	
