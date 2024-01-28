@@ -68,8 +68,15 @@ func get_aim_direction():
 func shoot():
 	var feather_instance = feather_scene.instantiate()
 	feather_instance.position = feather_spawn.get_global_position()
-	feather_instance.rotation = rotation
-	feather_instance.direction = Vector2(1.0,0.0).rotated(rotation).normalized()
+	if velocity.x > 0:
+		feather_instance.rotation = rotation
+		feather_instance.direction = Vector2(1.0,0.0).rotated(rotation).normalized()
+	elif velocity.x < 0:
+		feather_instance.direction = Vector2(-1.0, 0.0).rotated(rotation).normalized()
+		feather_instance.rotation = feather_instance.direction.angle()
+	else:
+		feather_instance.rotation = rotation
+		feather_instance.direction = Vector2(1.0,0.0).rotated(rotation).normalized()
 	get_tree().get_root().call_deferred("add_child", feather_instance)
 
 func attackMelee():

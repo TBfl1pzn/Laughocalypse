@@ -16,7 +16,8 @@ func _process(delta):
 		attack_cooldown.start()
 		player.attackMelee()
 		for i in enemies_in_area:
-			i.get_parent().hit()
+			if i:
+				i.get_parent().hit()
 
 #func _on_body_entered(body):
 	#if body.is_in_group("enemyHitboxes"):
