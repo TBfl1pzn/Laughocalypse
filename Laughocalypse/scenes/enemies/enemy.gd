@@ -15,6 +15,7 @@ var life_animation_weight = {
 @onready var hit3: AudioStreamPlayer = $AudioHit3
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var explosionSprite: Sprite2D = $ExplosionSprite
+var executed_once = true
 
 func _ready():
 	explosionSprite.hide()
@@ -55,15 +56,17 @@ func hit():
 	elif life == 1:
 		hit3.play()	
 	if life <= 0:
-		$"..".enemies = $"..".enemies - 1
-		player.kills = player.kills + 1
-		$"../CanvasLayer/KillsCounter/Kills".text = str(player.kills)
-		$Sprite.hide()
-		explosionSprite.show()
-		animationPlayer.play("explosion")
-		$CollisionShape2D.disabled = true
-		await animationPlayer.animation_finished
-		queue_free()
+		if executed_once:
+			executed_once = false
+			$"..".enemies = $"..".enemies - 1
+			player.kills = player.kills + 1
+			$"../CanvasLayer/KillsCounter/Kills".text = str(player.kills)
+			$Sprite.hide()
+			explosionSprite.show()
+			animationPlayer.play("explosion")
+			$CollisionShape2D.disabled = true
+			await animationPlayer.animation_finished
+			queue_free()
 
 func _on_hit_box_body_entered(body):
 	if body.name == "FlyingFeather":
