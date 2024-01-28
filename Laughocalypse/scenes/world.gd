@@ -13,6 +13,7 @@ func _on_health_change(health):
 	if health == 0:
 		get_tree().paused = true
 		$Finish/WavesContainer/Waves.text = str($CanvasLayer/Counter.waves)
+		$Finish/KillsContainer/Kills.text = str($Player.kills)
 		$Finish.show()
 
 	$CanvasLayer/Health/ProgressBar.value = health

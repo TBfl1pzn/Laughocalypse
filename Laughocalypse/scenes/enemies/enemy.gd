@@ -49,6 +49,8 @@ func hit():
 	elif life == 1:
 		hit3.play()	
 	if life <= 0:
+		player.kills = player.kills + 1
+		$"../CanvasLayer/KillsCounter/Kills".text = str(player.kills)
 		queue_free()
 
 func _on_hit_box_body_entered(body):

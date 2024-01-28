@@ -84,9 +84,9 @@ step = 1.0
 value = 100.0
 
 [node name="WaveText" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 123.0
+offset_left = 91.0
 offset_top = -10.0
-offset_right = 178.0
+offset_right = 146.0
 offset_bottom = 30.0
 
 [node name="Label" type="Label" parent="World/CanvasLayer/WaveText"]
@@ -97,12 +97,37 @@ theme_override_font_sizes/font_size = 10
 text = "Waves:"
 
 [node name="WaveCounter" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 160.0
+offset_left = 128.0
 offset_top = -10.0
-offset_right = 210.0
+offset_right = 178.0
 offset_bottom = 30.0
 
 [node name="Wave" type="Label" parent="World/CanvasLayer/WaveCounter"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_w3i6q")
+theme_override_font_sizes/font_size = 10
+
+[node name="KillsText" type="MarginContainer" parent="World/CanvasLayer"]
+offset_left = 147.0
+offset_top = -10.0
+offset_right = 202.0
+offset_bottom = 30.0
+
+[node name="Label" type="Label" parent="World/CanvasLayer/KillsText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_b6jx2")
+theme_override_font_sizes/font_size = 10
+text = "Kills:"
+
+[node name="KillsCounter" type="MarginContainer" parent="World/CanvasLayer"]
+offset_left = 176.0
+offset_top = -10.0
+offset_right = 226.0
+offset_bottom = 30.0
+
+[node name="Kills" type="Label" parent="World/CanvasLayer/KillsCounter"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_w3i6q")
@@ -113,7 +138,6 @@ position = Vector2(281, 61)
 player = NodePath("../Player")
 
 [node name="Finish" type="CanvasLayer" parent="World"]
-visible = false
 
 [node name="Background" type="MarginContainer" parent="World/Finish"]
 offset_left = -24.0
@@ -161,4 +185,29 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_hg336")
 theme_override_font_sizes/font_size = 10
-text = "Waves survived:"
+text = "Waves spawned:"
+
+[node name="KillsContainer" type="MarginContainer" parent="World/Finish"]
+offset_left = 96.0
+offset_top = 50.0
+offset_right = 136.0
+offset_bottom = 90.0
+
+[node name="Kills" type="Label" parent="World/Finish/KillsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_8cpn8")
+theme_override_font_sizes/font_size = 10
+
+[node name="TextKillsContainer" type="MarginContainer" parent="World/Finish"]
+offset_left = 7.0
+offset_top = 50.0
+offset_right = 132.0
+offset_bottom = 90.0
+
+[node name="KillsText" type="Label" parent="World/Finish/TextKillsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_hg336")
+theme_override_font_sizes/font_size = 10
+text = "Killed Units:"

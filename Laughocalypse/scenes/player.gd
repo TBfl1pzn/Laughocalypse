@@ -4,6 +4,7 @@ extends CharacterBody2D
 var screen_size # Size of the game window.	
 var feather_spawn: Marker2D
 var health = 100
+var kills = 0
 @export var feather_scene: PackedScene
 @onready var combat_feather = $FeatherAttack
 
@@ -13,6 +14,7 @@ signal health_changed(health)
 func _ready():
 	feather_spawn = $FeatherSpawn
 	screen_size = get_viewport_rect().size
+	$"../CanvasLayer/KillsCounter/Kills".text = str(kills)
 
 func handleInput():
 	var moveDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
