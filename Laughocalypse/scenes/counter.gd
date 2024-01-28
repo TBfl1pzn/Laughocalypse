@@ -6,7 +6,6 @@ var countdown = 7
 var waves = 1
 
 func _ready():
-	timer.start()
 	timer.timeout.connect(_on_timer_timeout)
 	$"../WaveCounter/Wave".text = str(waves)
 
@@ -17,19 +16,8 @@ func time_left_to_live():
 	return [second]
 	
 func _on_timer_timeout():
-	$"../..".setRandomMap()
-	$WorldsetRandomMap
-	for i in waves:
-		$"../../".addEnemy()
-
-	timer.start(countdown)
-	waves = waves + 1
-	$"../WaveCounter/Wave".text = str(waves)
+	if $"../../".enemies == 0:
+		print(1)
 	
 	
-	if (countdown > 4):
-		countdown = countdown - 1
-	
-func _process(delta):
-	label.text = "Next wave in %02d" % time_left_to_live()
 	

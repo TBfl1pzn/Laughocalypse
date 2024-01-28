@@ -1,5 +1,7 @@
 extends Node2D
 
+var enemies = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Finish.hide()

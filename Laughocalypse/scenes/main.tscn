@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4jclglqbo4ws"]
+[gd_scene load_steps=13 format=3 uid="uid://c4jclglqbo4ws"]
 
 [ext_resource type="PackedScene" uid="uid://20vxqkppv0wt" path="res://scenes/world.tscn" id="1_384hj"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_swm2d"]
@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c8nbx0ynj8tcn" path="res://scenes/enemies/enemy.tscn" id="3_1cldx"]
 [ext_resource type="Script" path="res://scenes/counter.gd" id="3_vj632"]
 [ext_resource type="FontFile" uid="uid://dpnh6moqx6x8e" path="res://assets/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf" id="4_tb6me"]
-
-[sub_resource type="FontVariation" id="FontVariation_0yiep"]
-base_font = ExtResource("4_tb6me")
 
 [sub_resource type="FontVariation" id="FontVariation_rj5cy"]
 base_font = ExtResource("4_tb6me")
@@ -58,15 +55,8 @@ offset_right = 45.0
 offset_bottom = 15.0
 script = ExtResource("3_vj632")
 
-[node name="RichTextLabel" type="Label" parent="World/CanvasLayer/Counter"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_0yiep")
-theme_override_font_sizes/font_size = 10
-
 [node name="Timer" type="Timer" parent="World/CanvasLayer/Counter"]
-wait_time = 7.0
-one_shot = true
+autostart = true
 
 [node name="Health" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 199.0
@@ -94,7 +84,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_b6jx2")
 theme_override_font_sizes/font_size = 10
-text = "Waves:"
+text = "Level:"
 
 [node name="WaveCounter" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 128.0
@@ -138,6 +128,7 @@ position = Vector2(281, 61)
 player = NodePath("../Player")
 
 [node name="Finish" type="CanvasLayer" parent="World"]
+visible = false
 
 [node name="Background" type="MarginContainer" parent="World/Finish"]
 offset_left = -24.0
@@ -223,4 +214,4 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_tb6me")
 theme_override_font_sizes/font_size = 8
-text = "Game created by Marco, Martin, Domini, Mika, Timo, Philipp"
+text = "Game created by Marco, Martin, Domi, Mika, Timo, Philipp"
