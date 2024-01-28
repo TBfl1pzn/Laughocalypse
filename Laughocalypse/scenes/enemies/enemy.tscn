@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8nbx0ynj8tcn"]
+[gd_scene load_steps=18 format=3 uid="uid://c8nbx0ynj8tcn"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_aa7xi"]
 [ext_resource type="Texture2D" uid="uid://d3btc45k7xfil" path="res://assets/art/Animation sheet.png" id="2_dj8le"]
 [ext_resource type="AudioStream" uid="uid://uuflo02fft0d" path="res://assets/sounds/baby-boy-laughing-70651.mp3" id="3_ffatt"]
 [ext_resource type="AudioStream" uid="uid://b8811lwmnkwai" path="res://assets/sounds/child-laughing-90664.mp3" id="4_wumdm"]
 [ext_resource type="AudioStream" uid="uid://dal7rhxy8roj1" path="res://assets/sounds/evil-laugh-49831.mp3" id="5_b4y4i"]
+[ext_resource type="Texture2D" uid="uid://4lnixlpsd2ij" path="res://assets/art/explosion_sprite_sheet.png" id="6_lveev"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr4c1"]
 radius = 3.0
@@ -27,6 +28,58 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplosionSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplosionSprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fh4sf"]
+resource_name = "explosion"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplosionSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplosionSprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_tw12d"]
@@ -140,6 +193,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qmhgu"]
 _data = {
 "RESET": SubResource("Animation_ho0e3"),
+"explosion": SubResource("Animation_fh4sf"),
 "walk_left": SubResource("Animation_tw12d"),
 "walk_left_heavy": SubResource("Animation_phtte"),
 "walk_left_medium": SubResource("Animation_y2yyh"),
@@ -177,6 +231,12 @@ stream = ExtResource("4_wumdm")
 
 [node name="AudioHit3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_b4y4i")
+
+[node name="ExplosionSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_lveev")
+hframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

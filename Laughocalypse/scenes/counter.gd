@@ -18,7 +18,7 @@ func time_left_to_live():
 func _on_timer_timeout():
 	if $"../../".enemies == 0:
 		waves = waves + 1
-
+		$"../..".setRandomMap()
 		for i in waves:
 			$"../..".addEnemy()
 		

@@ -14,18 +14,24 @@ var life_animation_weight = {
 @onready var hit2: AudioStreamPlayer = $AudioHit2
 @onready var hit3: AudioStreamPlayer = $AudioHit3
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+@onready var explosionSprite: Sprite2D = $ExplosionSprite
+
+func _ready():
+	explosionSprite.hide()
 
 func _process(delta):
-	
-	if velocity.x > 0:
-		animationPlayer.play("walk_right" + life_animation_weight[life])
-	else:
-		animationPlayer.play("walk_left" + life_animation_weight[life])
+	if life > 0:
+		if velocity.x > 0:
+			animationPlayer.play("walk_right" + life_animation_weight[life])
+		else:
+			animationPlayer.play("walk_left" + life_animation_weight[life])
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	velocity = Vector2(0, 0)
+	if life <= 0:
+		return
 
 	if player.position.x > position.x:
 		velocity += Vector2(1, 0)
@@ -52,6 +58,11 @@ func hit():
 		$"..".enemies = $"..".enemies - 1
 		player.kills = player.kills + 1
 		$"../CanvasLayer/KillsCounter/Kills".text = str(player.kills)
+		$Sprite.hide()
+		explosionSprite.show()
+		animationPlayer.play("explosion")
+		$CollisionShape2D.disabled = true
+		await animationPlayer.animation_finished
 		queue_free()
 
 func _on_hit_box_body_entered(body):
