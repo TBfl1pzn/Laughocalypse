@@ -18,7 +18,6 @@ config/icon="res://assets/art/godot_icon.svg"
 [autoload]
 
 Global="*res://scenes/global.gd"
-Multiplayer="*res://scenes/multiplayer/multiplayer.gd"
 
 [display]
 

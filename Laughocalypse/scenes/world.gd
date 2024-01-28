@@ -2,6 +2,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Finish.hide()
 	$Player.health_changed.connect(_on_health_change)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -10,8 +11,10 @@ func _process(delta):
 
 func _on_health_change(health):
 	if health == 0:
-		get_tree().change_scene_to_file("res://scenes/finish.tscn")
-		
+		get_tree().paused = true
+		$Finish/WavesContainer/Waves.text = str($CanvasLayer/Counter.waves)
+		$Finish.show()
+
 	$CanvasLayer/Health/ProgressBar.value = health
 	
 
