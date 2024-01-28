@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8nbx0ynj8tcn"]
+[gd_scene load_steps=21 format=3 uid="uid://c8nbx0ynj8tcn"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_aa7xi"]
 [ext_resource type="Texture2D" uid="uid://d3btc45k7xfil" path="res://assets/art/Animation sheet.png" id="2_dj8le"]
@@ -202,6 +202,68 @@ _data = {
 "walk_right_medium": SubResource("Animation_gga5e")
 }
 
+[sub_resource type="Animation" id="Animation_ii8qh"]
+resource_name = "dying_color"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0901961, 0.603922, 0.662745, 0.768627), Color(0.239216, 0.615686, 0.443137, 0.768627), Color(0.643137, 0.407843, 0.839216, 0.768627), Color(0.72549, 0.466667, 0.223529, 0.768627), Color(1, 0, 0, 0.768627), Color(0.439216, 0.6, 0, 0.768627)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.788235), Color(1, 1, 1, 0.0196078)]
+}
+
+[sub_resource type="Animation" id="Animation_s03ek"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.768627)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5kpw5"]
+_data = {
+"RESET": SubResource("Animation_s03ek"),
+"dying_color": SubResource("Animation_ii8qh")
+}
+
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_aa7xi")
 
@@ -211,11 +273,19 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_cr4c1")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+clip_children = 2
 position = Vector2(-1, -21)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_dj8le")
 hframes = 5
 vframes = 6
+
+[node name="ColorRect" type="ColorRect" parent="Sprite"]
+offset_left = -190.0
+offset_top = -175.0
+offset_right = 235.0
+offset_bottom = 225.0
+color = Color(1, 0, 0, 0.768627)
 
 [node name="HitBox" type="Area2D" parent="." groups=["enemyHitboxes"]]
 
@@ -233,6 +303,7 @@ stream = ExtResource("4_wumdm")
 stream = ExtResource("5_b4y4i")
 
 [node name="ExplosionSprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -20)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_lveev")
@@ -241,6 +312,11 @@ hframes = 5
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qmhgu")
+}
+
+[node name="AnimationPlayerDying" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5kpw5")
 }
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
