@@ -18,6 +18,7 @@ func _on_health_change(health):
 		$Finish/WavesContainer/Waves.text = str($CanvasLayer/Counter.waves)
 		$Finish/KillsContainer/Kills.text = str($Player.kills)
 		$Finish.show()
+		$Finish/SongPlayer4.play()
 
 	$CanvasLayer/Health/ProgressBar.value = health
 	

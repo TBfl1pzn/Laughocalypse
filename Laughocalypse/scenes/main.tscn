@@ -1,11 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4jclglqbo4ws"]
+[gd_scene load_steps=19 format=3 uid="uid://c4jclglqbo4ws"]
 
 [ext_resource type="PackedScene" uid="uid://20vxqkppv0wt" path="res://scenes/world.tscn" id="1_384hj"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_swm2d"]
 [ext_resource type="PackedScene" uid="uid://brk6nur78l2kr" path="res://scenes/player.tscn" id="1_yra78"]
 [ext_resource type="PackedScene" uid="uid://c8nbx0ynj8tcn" path="res://scenes/enemies/enemy.tscn" id="3_1cldx"]
 [ext_resource type="Script" path="res://scenes/counter.gd" id="3_vj632"]
+[ext_resource type="Texture2D" uid="uid://b16dwuxr1uori" path="res://assets/banner.png" id="4_qsod8"]
 [ext_resource type="FontFile" uid="uid://dpnh6moqx6x8e" path="res://assets/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf" id="4_tb6me"]
+[ext_resource type="Texture2D" uid="uid://cu0ok10fwo5bp" path="res://assets/end.png" id="7_dlksf"]
+[ext_resource type="AudioStream" uid="uid://6ldotyc1onq6" path="res://assets/sounds/music/song_1.mp3" id="9_477hi"]
+[ext_resource type="AudioStream" uid="uid://c63dmhn3p2e5b" path="res://assets/sounds/music/song_2.mp3" id="10_qpdlb"]
+[ext_resource type="AudioStream" uid="uid://cjvkvlwg2nnf0" path="res://assets/sounds/music/song_3.mp3" id="11_j50lf"]
+[ext_resource type="AudioStream" uid="uid://h7r0qrsldehc" path="res://assets/sounds/music/song_4.mp3" id="12_7vkop"]
 
 [sub_resource type="FontVariation" id="FontVariation_rj5cy"]
 base_font = ExtResource("4_tb6me")
@@ -14,9 +20,6 @@ base_font = ExtResource("4_tb6me")
 base_font = ExtResource("4_tb6me")
 
 [sub_resource type="FontVariation" id="FontVariation_w3i6q"]
-base_font = ExtResource("4_tb6me")
-
-[sub_resource type="FontVariation" id="FontVariation_th8aa"]
 base_font = ExtResource("4_tb6me")
 
 [sub_resource type="FontVariation" id="FontVariation_8cpn8"]
@@ -43,13 +46,13 @@ zoom = Vector2(0.5, 0.5)
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
 [node name="Background" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = -13.0
-offset_right = 244.0
-offset_bottom = 14.0
+offset_right = 240.0
+offset_bottom = 12.0
 
-[node name="ColorRect" type="ColorRect" parent="World/CanvasLayer/Background"]
+[node name="TextureRect" type="TextureRect" parent="World/CanvasLayer/Background"]
 layout_mode = 2
-color = Color(1, 0.447059, 1, 1)
+texture = ExtResource("4_qsod8")
+expand_mode = 3
 
 [node name="Counter" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 1.0
@@ -62,8 +65,8 @@ script = ExtResource("3_vj632")
 autostart = true
 
 [node name="Health" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 199.0
-offset_right = 239.0
+offset_left = 179.0
+offset_right = 219.0
 offset_bottom = 13.0
 size_flags_vertical = 4
 
@@ -77,54 +80,54 @@ step = 1.0
 value = 100.0
 
 [node name="WaveText" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 28.0
-offset_top = -11.0
-offset_right = 83.0
-offset_bottom = 29.0
+offset_left = 22.0
+offset_top = -12.0
+offset_right = 77.0
+offset_bottom = 28.0
 
 [node name="Label" type="Label" parent="World/CanvasLayer/WaveText"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_b6jx2")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Level:"
 
 [node name="WaveCounter" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 66.0
-offset_top = -11.0
-offset_right = 116.0
-offset_bottom = 29.0
+offset_left = 48.0
+offset_top = -12.0
+offset_right = 98.0
+offset_bottom = 28.0
 
 [node name="Wave" type="Label" parent="World/CanvasLayer/WaveCounter"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_w3i6q")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 
 [node name="KillsText" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 112.0
-offset_top = -11.0
-offset_right = 167.0
-offset_bottom = 29.0
+offset_left = 105.0
+offset_top = -12.0
+offset_right = 160.0
+offset_bottom = 28.0
 
 [node name="Label" type="Label" parent="World/CanvasLayer/KillsText"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_b6jx2")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Kills:"
 
 [node name="KillsCounter" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 147.0
-offset_top = -11.0
-offset_right = 197.0
-offset_bottom = 29.0
+offset_left = 130.0
+offset_top = -12.0
+offset_right = 180.0
+offset_bottom = 28.0
 
 [node name="Kills" type="Label" parent="World/CanvasLayer/KillsCounter"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_w3i6q")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 
 [node name="Enemy" parent="World" node_paths=PackedStringArray("player") instance=ExtResource("3_1cldx")]
 position = Vector2(281, 61)
@@ -133,33 +136,21 @@ player = NodePath("../Player")
 [node name="Finish" type="CanvasLayer" parent="World"]
 
 [node name="Background" type="MarginContainer" parent="World/Finish"]
-offset_left = -24.0
-offset_top = -7.0
-offset_right = 250.0
-offset_bottom = 145.0
+offset_left = -6.0
+offset_top = 1.0
+offset_right = 241.0
+offset_bottom = 135.0
 
-[node name="ColorRect" type="ColorRect" parent="World/Finish/Background"]
+[node name="TextureRect" type="TextureRect" parent="World/Finish/Background"]
 layout_mode = 2
-
-[node name="TextContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 225.0
-offset_bottom = 55.0
-
-[node name="Label" type="Label" parent="World/Finish/TextContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_th8aa")
-theme_override_font_sizes/font_size = 10
-text = "Now look who is laughing !!! 
-Get better next time"
+texture = ExtResource("7_dlksf")
+expand_mode = 3
 
 [node name="WavesContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 96.0
-offset_top = 74.0
-offset_right = 136.0
-offset_bottom = 114.0
+offset_left = 104.0
+offset_top = 68.0
+offset_right = 144.0
+offset_bottom = 108.0
 
 [node name="Waves" type="Label" parent="World/Finish/WavesContainer"]
 layout_mode = 2
@@ -168,10 +159,10 @@ theme_override_fonts/font = SubResource("FontVariation_8cpn8")
 theme_override_font_sizes/font_size = 10
 
 [node name="TextWaveContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 7.0
-offset_top = 74.0
-offset_right = 132.0
-offset_bottom = 114.0
+offset_left = 18.0
+offset_top = 67.0
+offset_right = 143.0
+offset_bottom = 107.0
 
 [node name="WaveText" type="Label" parent="World/Finish/TextWaveContainer"]
 layout_mode = 2
@@ -181,10 +172,10 @@ theme_override_font_sizes/font_size = 10
 text = "Level reached:"
 
 [node name="KillsContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 96.0
-offset_top = 50.0
-offset_right = 136.0
-offset_bottom = 90.0
+offset_left = 103.0
+offset_top = 53.0
+offset_right = 143.0
+offset_bottom = 93.0
 
 [node name="Kills" type="Label" parent="World/Finish/KillsContainer"]
 layout_mode = 2
@@ -193,10 +184,10 @@ theme_override_fonts/font = SubResource("FontVariation_8cpn8")
 theme_override_font_sizes/font_size = 10
 
 [node name="TextKillsContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 7.0
-offset_top = 50.0
-offset_right = 132.0
-offset_bottom = 90.0
+offset_left = 18.0
+offset_top = 53.0
+offset_right = 143.0
+offset_bottom = 93.0
 
 [node name="KillsText" type="Label" parent="World/Finish/TextKillsContainer"]
 layout_mode = 2
@@ -206,28 +197,48 @@ theme_override_font_sizes/font_size = 10
 text = "Killed Units:"
 
 [node name="GameBy" type="MarginContainer" parent="World/Finish"]
-offset_left = 6.0
-offset_top = 103.0
-offset_right = 238.0
-offset_bottom = 139.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = 18.5
+offset_right = 131.0
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Subtitle" type="Label" parent="World/Finish/GameBy"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_tb6me")
-theme_override_font_sizes/font_size = 8
-text = "Game created by Marco, Martin, Domi, Mika, Timo, Philipp"
+theme_override_font_sizes/font_size = 6
+text = "Game by Marco, Martin, Domi, Mika, 
+Timo, Philipp"
 
 [node name="RestartContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 167.0
-offset_top = 51.0
-offset_right = 232.0
-offset_bottom = 71.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 64.0
+offset_bottom = 32.0
 
 [node name="Restart" type="Button" parent="World/Finish/RestartContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_pwawl")
 theme_override_font_sizes/font_size = 11
 text = "Restart"
+
+[node name="SongPlayer1" type="AudioStreamPlayer" parent="World/Finish"]
+stream = ExtResource("9_477hi")
+
+[node name="SongPlayer2" type="AudioStreamPlayer" parent="World/Finish"]
+stream = ExtResource("10_qpdlb")
+
+[node name="SongPlayer3" type="AudioStreamPlayer" parent="World/Finish"]
+stream = ExtResource("11_j50lf")
+
+[node name="SongPlayer4" type="AudioStreamPlayer" parent="World/Finish"]
+stream = ExtResource("12_7vkop")
 
 [connection signal="pressed" from="World/Finish/RestartContainer/Restart" to="." method="_on_button_pressed"]
