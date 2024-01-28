@@ -61,6 +61,7 @@ func hit():
 		$Sprite.hide()
 		explosionSprite.show()
 		animationPlayer.play("explosion")
+		$CollisionShape2D.disabled = true
 		await animationPlayer.animation_finished
 		queue_free()
 
