@@ -41,9 +41,9 @@ text = "The Ultimate Laughter Showdown
 [node name="quitContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 offset_left = 157.0
-offset_top = 94.0
+offset_top = 92.0
 offset_right = 227.0
-offset_bottom = 128.0
+offset_bottom = 126.0
 scale = Vector2(0.8, 0.8)
 
 [node name="Quit" type="Button" parent="quitContainer"]
@@ -58,9 +58,9 @@ color = Color(1, 1, 0.313726, 0)
 [node name="playContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = 45.0
-offset_top = 94.0
+offset_top = 92.0
 offset_right = 115.0
-offset_bottom = 128.0
+offset_bottom = 126.0
 scale = Vector2(0.8, 0.8)
 
 [node name="Play" type="Button" parent="playContainer"]

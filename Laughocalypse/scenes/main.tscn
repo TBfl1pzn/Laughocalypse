@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scenes/counter.gd" id="3_vj632"]
 [ext_resource type="Texture2D" uid="uid://b16dwuxr1uori" path="res://assets/banner.png" id="4_qsod8"]
 [ext_resource type="FontFile" uid="uid://dpnh6moqx6x8e" path="res://assets/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf" id="4_tb6me"]
-[ext_resource type="Texture2D" uid="uid://dl1qdjr1voh7n" path="res://assets/end.png" id="7_dlksf"]
+[ext_resource type="Texture2D" uid="uid://cu0ok10fwo5bp" path="res://assets/end.png" id="7_dlksf"]
 
 [sub_resource type="FontVariation" id="FontVariation_rj5cy"]
 base_font = ExtResource("4_tb6me")
@@ -143,10 +143,10 @@ texture = ExtResource("7_dlksf")
 expand_mode = 3
 
 [node name="WavesContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 96.0
-offset_top = 74.0
-offset_right = 136.0
-offset_bottom = 114.0
+offset_left = 94.0
+offset_top = 68.0
+offset_right = 134.0
+offset_bottom = 108.0
 
 [node name="Waves" type="Label" parent="World/Finish/WavesContainer"]
 layout_mode = 2
@@ -155,10 +155,10 @@ theme_override_fonts/font = SubResource("FontVariation_8cpn8")
 theme_override_font_sizes/font_size = 10
 
 [node name="TextWaveContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 7.0
-offset_top = 74.0
-offset_right = 132.0
-offset_bottom = 114.0
+offset_left = 8.0
+offset_top = 67.0
+offset_right = 133.0
+offset_bottom = 107.0
 
 [node name="WaveText" type="Label" parent="World/Finish/TextWaveContainer"]
 layout_mode = 2
@@ -168,10 +168,10 @@ theme_override_font_sizes/font_size = 10
 text = "Level reached:"
 
 [node name="KillsContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 50.0
-offset_top = 18.0
-offset_right = 90.0
-offset_bottom = 58.0
+offset_left = 93.0
+offset_top = 53.0
+offset_right = 133.0
+offset_bottom = 93.0
 
 [node name="Kills" type="Label" parent="World/Finish/KillsContainer"]
 layout_mode = 2
@@ -180,10 +180,10 @@ theme_override_fonts/font = SubResource("FontVariation_8cpn8")
 theme_override_font_sizes/font_size = 10
 
 [node name="TextKillsContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = -4.0
-offset_top = 18.0
-offset_right = 121.0
-offset_bottom = 58.0
+offset_left = 8.0
+offset_top = 53.0
+offset_right = 133.0
+offset_bottom = 93.0
 
 [node name="KillsText" type="Label" parent="World/Finish/TextKillsContainer"]
 layout_mode = 2
@@ -193,23 +193,31 @@ theme_override_font_sizes/font_size = 10
 text = "Killed Units:"
 
 [node name="GameBy" type="MarginContainer" parent="World/Finish"]
-offset_left = 6.0
-offset_top = 103.0
-offset_right = 238.0
-offset_bottom = 139.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 18.5
+offset_right = 121.0
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Subtitle" type="Label" parent="World/Finish/GameBy"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_tb6me")
-theme_override_font_sizes/font_size = 8
-text = "Game created by Marco, Martin, Domi, Mika, Timo, Philipp"
+theme_override_font_sizes/font_size = 6
+text = "Game by Marco, Martin, Domi
+Mika, Timo, Philipp"
 
 [node name="RestartContainer" type="MarginContainer" parent="World/Finish"]
-offset_left = 5.0
-offset_top = 6.0
-offset_right = 70.0
-offset_bottom = 26.0
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 63.0
+offset_bottom = 27.0
 
 [node name="Restart" type="Button" parent="World/Finish/RestartContainer"]
 layout_mode = 2
