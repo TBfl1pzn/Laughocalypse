@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4jclglqbo4ws"]
+[gd_scene load_steps=19 format=3 uid="uid://c4jclglqbo4ws"]
 
 [ext_resource type="PackedScene" uid="uid://20vxqkppv0wt" path="res://scenes/world.tscn" id="1_384hj"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_swm2d"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b16dwuxr1uori" path="res://assets/banner.png" id="4_qsod8"]
 [ext_resource type="FontFile" uid="uid://dpnh6moqx6x8e" path="res://assets/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf" id="4_tb6me"]
 [ext_resource type="Texture2D" uid="uid://cu0ok10fwo5bp" path="res://assets/end.png" id="7_dlksf"]
+[ext_resource type="AudioStream" uid="uid://6ldotyc1onq6" path="res://assets/sounds/music/song_1.mp3" id="9_477hi"]
+[ext_resource type="AudioStream" uid="uid://c63dmhn3p2e5b" path="res://assets/sounds/music/song_2.mp3" id="10_qpdlb"]
+[ext_resource type="AudioStream" uid="uid://cjvkvlwg2nnf0" path="res://assets/sounds/music/song_3.mp3" id="11_j50lf"]
+[ext_resource type="AudioStream" uid="uid://h7r0qrsldehc" path="res://assets/sounds/music/song_4.mp3" id="12_7vkop"]
 
 [sub_resource type="FontVariation" id="FontVariation_rj5cy"]
 base_font = ExtResource("4_tb6me")
@@ -224,5 +228,17 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_pwawl")
 theme_override_font_sizes/font_size = 11
 text = "Restart"
+
+[node name="SongPlayer1" type="AudioStreamPlayer" parent="World/Finish"]
+stream = ExtResource("9_477hi")
+
+[node name="SongPlayer2" type="AudioStreamPlayer" parent="World/Finish"]
+stream = ExtResource("10_qpdlb")
+
+[node name="SongPlayer3" type="AudioStreamPlayer" parent="World/Finish"]
+stream = ExtResource("11_j50lf")
+
+[node name="SongPlayer4" type="AudioStreamPlayer" parent="World/Finish"]
+stream = ExtResource("12_7vkop")
 
 [connection signal="pressed" from="World/Finish/RestartContainer/Restart" to="." method="_on_button_pressed"]

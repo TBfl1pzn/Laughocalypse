@@ -1,9 +1,13 @@
 extends Node
 
+@onready var songPlayer1: AudioStreamPlayer = $SongPlayer1
+@onready var songPlayer2: AudioStreamPlayer = $SongPlayer2
+@onready var songPlayer3: AudioStreamPlayer = $SongPlayer3
+@onready var songPlayer4: AudioStreamPlayer = $SongPlayer4
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
