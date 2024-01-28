@@ -17,12 +17,15 @@ func time_left_to_live():
 	return [second]
 	
 func _on_timer_timeout():
+	$"../..".setRandomMap()
+	$WorldsetRandomMap
 	for i in waves:
 		$"../../".addEnemy()
 
 	timer.start(countdown)
 	waves = waves + 1
 	$"../WaveCounter/Wave".text = str(waves)
+	
 	
 	if (countdown > 4):
 		countdown = countdown - 1
