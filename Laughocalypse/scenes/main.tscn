@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4jclglqbo4ws"]
+[gd_scene load_steps=14 format=3 uid="uid://c4jclglqbo4ws"]
 
 [ext_resource type="PackedScene" uid="uid://20vxqkppv0wt" path="res://scenes/world.tscn" id="1_384hj"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_swm2d"]
@@ -23,6 +23,9 @@ base_font = ExtResource("4_tb6me")
 base_font = ExtResource("4_tb6me")
 
 [sub_resource type="FontVariation" id="FontVariation_hg336"]
+base_font = ExtResource("4_tb6me")
+
+[sub_resource type="FontVariation" id="FontVariation_pwawl"]
 base_font = ExtResource("4_tb6me")
 
 [node name="Main" type="Node"]
@@ -128,7 +131,6 @@ position = Vector2(281, 61)
 player = NodePath("../Player")
 
 [node name="Finish" type="CanvasLayer" parent="World"]
-visible = false
 
 [node name="Background" type="MarginContainer" parent="World/Finish"]
 offset_left = -24.0
@@ -215,3 +217,17 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_tb6me")
 theme_override_font_sizes/font_size = 8
 text = "Game created by Marco, Martin, Domi, Mika, Timo, Philipp"
+
+[node name="RestartContainer" type="MarginContainer" parent="World/Finish"]
+offset_left = 167.0
+offset_top = 51.0
+offset_right = 232.0
+offset_bottom = 71.0
+
+[node name="Restart" type="Button" parent="World/Finish/RestartContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_pwawl")
+theme_override_font_sizes/font_size = 11
+text = "Restart"
+
+[connection signal="pressed" from="World/Finish/RestartContainer/Restart" to="." method="_on_button_pressed"]
