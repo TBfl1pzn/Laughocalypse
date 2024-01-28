@@ -67,6 +67,7 @@ func get_aim_direction():
 
 func shoot():
 	var feather_instance = feather_scene.instantiate()
+	feather_instance.player = self
 	feather_instance.position = feather_spawn.get_global_position()
 	if velocity.x > 0:
 		feather_instance.rotation = rotation

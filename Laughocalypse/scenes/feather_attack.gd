@@ -9,7 +9,6 @@ var feather_timeout = false
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("hit") and Global.feather_number == 1 and attack_cooldown.is_stopped():
