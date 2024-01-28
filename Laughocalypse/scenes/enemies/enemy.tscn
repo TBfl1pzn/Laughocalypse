@@ -7,9 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://cn81iytkpmlbj" path="res://assets/sounds/evil-laugh-49831.mp3" id="5_b4y4i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr4c1"]
+radius = 3.0
+height = 18.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8hkn"]
-radius = 15.0
+radius = 11.0
+height = 50.0
 
 [sub_resource type="Animation" id="Animation_ho0e3"]
 length = 0.001
@@ -149,9 +152,12 @@ _data = {
 script = ExtResource("1_aa7xi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_cr4c1")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-1, -21)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_dj8le")
 hframes = 5
@@ -160,6 +166,7 @@ vframes = 6
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1, -21)
 shape = SubResource("CapsuleShape2D_h8hkn")
 
 [node name="AudioHit1" type="AudioStreamPlayer" parent="."]

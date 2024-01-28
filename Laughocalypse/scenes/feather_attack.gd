@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var player: CharacterBody2D
 @onready var attack_cooldown:Timer = $Timer
 var enemies_in_area = []
 var feather_timeout = false
@@ -13,6 +14,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("hit") and Global.feather_number == 1 and attack_cooldown.is_stopped():
 		attack_cooldown.start()
+		player.attackMelee()
 		for i in enemies_in_area:
 			i.hit()
 
