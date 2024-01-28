@@ -74,10 +74,10 @@ step = 1.0
 value = 100.0
 
 [node name="WaveText" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 91.0
-offset_top = -10.0
-offset_right = 146.0
-offset_bottom = 30.0
+offset_left = 28.0
+offset_top = -11.0
+offset_right = 83.0
+offset_bottom = 29.0
 
 [node name="Label" type="Label" parent="World/CanvasLayer/WaveText"]
 layout_mode = 2
@@ -87,10 +87,10 @@ theme_override_font_sizes/font_size = 10
 text = "Level:"
 
 [node name="WaveCounter" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 128.0
-offset_top = -10.0
-offset_right = 178.0
-offset_bottom = 30.0
+offset_left = 66.0
+offset_top = -11.0
+offset_right = 116.0
+offset_bottom = 29.0
 
 [node name="Wave" type="Label" parent="World/CanvasLayer/WaveCounter"]
 layout_mode = 2
@@ -99,10 +99,10 @@ theme_override_fonts/font = SubResource("FontVariation_w3i6q")
 theme_override_font_sizes/font_size = 10
 
 [node name="KillsText" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 147.0
-offset_top = -10.0
-offset_right = 202.0
-offset_bottom = 30.0
+offset_left = 112.0
+offset_top = -11.0
+offset_right = 167.0
+offset_bottom = 29.0
 
 [node name="Label" type="Label" parent="World/CanvasLayer/KillsText"]
 layout_mode = 2
@@ -112,10 +112,10 @@ theme_override_font_sizes/font_size = 10
 text = "Kills:"
 
 [node name="KillsCounter" type="MarginContainer" parent="World/CanvasLayer"]
-offset_left = 176.0
-offset_top = -10.0
-offset_right = 226.0
-offset_bottom = 30.0
+offset_left = 147.0
+offset_top = -11.0
+offset_right = 197.0
+offset_bottom = 29.0
 
 [node name="Kills" type="Label" parent="World/CanvasLayer/KillsCounter"]
 layout_mode = 2
@@ -176,7 +176,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_hg336")
 theme_override_font_sizes/font_size = 10
-text = "Waves spawned:"
+text = "Level reached:"
 
 [node name="KillsContainer" type="MarginContainer" parent="World/Finish"]
 offset_left = 96.0
