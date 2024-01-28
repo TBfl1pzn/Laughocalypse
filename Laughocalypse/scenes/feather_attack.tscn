@@ -4,7 +4,8 @@
 [ext_resource type="Script" path="res://scenes/feather_attack.gd" id="1_fhf1w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e877p"]
-height = 48.0
+radius = 14.0
+height = 52.0
 
 [node name="FeatherAttack" type="Area2D" groups=["feather_attack"]]
 position = Vector2(8, 0)
@@ -25,5 +26,5 @@ shape = SubResource("CapsuleShape2D_e877p")
 wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]

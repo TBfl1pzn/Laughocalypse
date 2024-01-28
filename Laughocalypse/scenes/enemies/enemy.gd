@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var player: CharacterBody2D
 const speed = 25
-var life = 4
+var life = 3
 var life_animation_weight = {
 	4: "",
 	3: "",

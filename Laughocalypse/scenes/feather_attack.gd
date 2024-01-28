@@ -16,16 +16,30 @@ func _process(delta):
 		attack_cooldown.start()
 		player.attackMelee()
 		for i in enemies_in_area:
-			i.hit()
+			i.get_parent().hit()
 
-func _on_body_entered(body):
-	if body.is_in_group("enemy"):
-		enemies_in_area.append(body)
+#func _on_body_entered(body):
+	#if body.is_in_group("enemyHitboxes"):
+		#enemies_in_area.append(body)
+#
+#func _on_body_exited(body):
+	#if body.is_in_group("enemyHitboxes"):
+		#var count_up = 0
+		#for i in enemies_in_area:
+			#if i == body:
+				#enemies_in_area.remove_at(count_up)
+				#count_up += 1
 
-func _on_body_exited(body):
-	if body.is_in_group("enemy"):
+
+func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	if area.is_in_group("enemyHitboxes"):
+		enemies_in_area.append(area)
+
+
+func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	if area and area.is_in_group("enemyHitboxes"):
 		var count_up = 0
 		for i in enemies_in_area:
-			if i == body:
+			if i == area:
 				enemies_in_area.remove_at(count_up)
 				count_up += 1

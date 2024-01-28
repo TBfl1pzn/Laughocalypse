@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_aa7xi"]
 [ext_resource type="Texture2D" uid="uid://d3btc45k7xfil" path="res://assets/art/Animation sheet.png" id="2_dj8le"]
-[ext_resource type="AudioStream" uid="uid://6ruot4qr7u5x" path="res://assets/sounds/baby-boy-laughing-70651.mp3" id="3_ffatt"]
-[ext_resource type="AudioStream" uid="uid://usco4gywgpjf" path="res://assets/sounds/child-laughing-90664.mp3" id="4_wumdm"]
-[ext_resource type="AudioStream" uid="uid://cn81iytkpmlbj" path="res://assets/sounds/evil-laugh-49831.mp3" id="5_b4y4i"]
+[ext_resource type="AudioStream" uid="uid://uuflo02fft0d" path="res://assets/sounds/baby-boy-laughing-70651.mp3" id="3_ffatt"]
+[ext_resource type="AudioStream" uid="uid://b8811lwmnkwai" path="res://assets/sounds/child-laughing-90664.mp3" id="4_wumdm"]
+[ext_resource type="AudioStream" uid="uid://dal7rhxy8roj1" path="res://assets/sounds/evil-laugh-49831.mp3" id="5_b4y4i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr4c1"]
 radius = 3.0
@@ -163,7 +163,7 @@ texture = ExtResource("2_dj8le")
 hframes = 5
 vframes = 6
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["enemyHitboxes"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(1, -21)
