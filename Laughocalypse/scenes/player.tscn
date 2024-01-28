@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://brk6nur78l2kr"]
+[gd_scene load_steps=16 format=3 uid="uid://brk6nur78l2kr"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_wl7nx"]
 [ext_resource type="PackedScene" uid="uid://bdoq3yf8eqlg4" path="res://scenes/flying_feather.tscn" id="2_ytu8y"]
@@ -328,6 +328,9 @@ _data = {
 "walk_stop": SubResource("Animation_g6wra")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_quf0p"]
+radius = 32.8882
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_wl7nx")
@@ -360,3 +363,10 @@ libraries = {
 [node name="MeleeAttackTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_quf0p")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

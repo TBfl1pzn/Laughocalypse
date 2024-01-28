@@ -65,6 +65,7 @@ func hit():
 			player.kills = player.kills + 1
 			$"../CanvasLayer/KillsCounter/Kills".text = str(player.kills)
 			$CollisionShape2D.disabled = true
+			$HitBox/CollisionShape2D.disabled = true
 			animationPlayer.stop()
 			await hit3.finished
 			$Sprite.hide()
