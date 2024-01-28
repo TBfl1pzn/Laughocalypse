@@ -15,10 +15,12 @@ var life_animation_weight = {
 @onready var hit3: AudioStreamPlayer = $AudioHit3
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var explosionSprite: Sprite2D = $ExplosionSprite
+@onready var colorRect: ColorRect = $Sprite/ColorRect
 var executed_once = true
 
 func _ready():
 	explosionSprite.hide()
+	colorRect.hide()
 
 func _process(delta):
 	if life > 0:
@@ -49,22 +51,25 @@ func _physics_process(delta):
 
 func hit():
 	life -= 1
-	if life == 3:
+	if life == 2:
 		hit1.play()
-	elif life == 2:
-		hit2.play()
 	elif life == 1:
-		hit3.play()	
+		hit2.play()
 	if life <= 0:
 		if executed_once:
+			hit3.play(2.0)
+			$AnimationPlayerDying.play("dying_color")
 			executed_once = false
+			colorRect.show()
 			$"..".enemies = $"..".enemies - 1
 			player.kills = player.kills + 1
 			$"../CanvasLayer/KillsCounter/Kills".text = str(player.kills)
+			$CollisionShape2D.disabled = true
+			animationPlayer.stop()
+			await hit3.finished
 			$Sprite.hide()
 			explosionSprite.show()
 			animationPlayer.play("explosion")
-			$CollisionShape2D.disabled = true
 			await animationPlayer.animation_finished
 			queue_free()
 
