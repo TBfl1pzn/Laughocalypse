@@ -94,10 +94,6 @@ func _physics_process(delta):
 		if body_name.is_in_group("enemy"):
 			health = health - 1
 			health_changed.emit(health)
-		
-		#if body_name.name == "FlyingFeather":
-			#Global.feather_number = 1
-			#get_tree().call_group("flying_feather", "queue_free")
 
 func _on_feather_attack_body_entered(body):
 	pass # Replace with function body.

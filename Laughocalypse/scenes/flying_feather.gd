@@ -30,8 +30,6 @@ func _physics_process(delta):
 	
 	if collision_info:
 		direction = direction.bounce(collision_info.get_normal())
-		direction.x *= feather_speed
-		direction.y *= feather_speed
 		rotation = direction.angle()
 
 func _on_timer_timeout():
