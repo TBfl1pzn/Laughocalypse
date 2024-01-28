@@ -32,6 +32,7 @@ base_font = ExtResource("4_tb6me")
 script = ExtResource("1_swm2d")
 
 [node name="World" parent="." instance=ExtResource("1_384hj")]
+position = Vector2(1, 0)
 
 [node name="Player" parent="World" instance=ExtResource("1_yra78")]
 position = Vector2(196, 126)

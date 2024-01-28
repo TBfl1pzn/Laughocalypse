@@ -41,7 +41,6 @@ func _physics_process(delta):
 	move_and_collide(velocity * delta)
 
 func hit():
-	print("hit")
 	life -= 1
 	if life == 3:
 		hit1.play()
@@ -53,7 +52,5 @@ func hit():
 		queue_free()
 
 func _on_hit_box_body_entered(body):
-	print(body.name)
-	print(body.is_in_group("feather_attack"))
 	if body.name == "FlyingFeather":
 		hit()

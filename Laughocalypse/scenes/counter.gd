@@ -24,7 +24,7 @@ func _on_timer_timeout():
 	waves = waves + 1
 	$"../WaveCounter/Wave".text = str(waves)
 	
-	if (countdown > 2):
+	if (countdown > 4):
 		countdown = countdown - 1
 	
 func _process(delta):
