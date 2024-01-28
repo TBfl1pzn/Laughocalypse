@@ -5,6 +5,7 @@ var screen_size # Size of the game window.
 var feather_spawn: Marker2D
 var health = 100
 @export var feather_scene: PackedScene
+@onready var combat_feather = $FeatherAttack
 
 signal health_changed(health)
 
@@ -25,7 +26,12 @@ func _process(delta):
 		if Global.feather_number == 1:
 			Global.feather_number = 0
 			shoot()
-			
+
+	if Global.feather_number == 0:
+		combat_feather.hide()
+	else:
+		combat_feather.show()
+
 func shoot():
 	var feather_instance = feather_scene.instantiate()
 	feather_instance.position = feather_spawn.get_global_position()
