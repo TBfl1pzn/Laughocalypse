@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bl32lbavc4ki1" path="res://scenes/feather_attack.tscn" id="4_6hxyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx400"]
-size = Vector2(25, 26)
+size = Vector2(25, 9)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_wl7nx")
 feather_scene = ExtResource("2_ytu8y")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(0, -25)
 shape = SubResource("RectangleShape2D_bx400")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

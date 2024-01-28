@@ -38,7 +38,7 @@ func _physics_process(delta):
 
 	velocity = velocity * speed
 
-	move_and_slide()
+	move_and_collide(velocity * delta)
 
 func hit():
 	print("hit")
