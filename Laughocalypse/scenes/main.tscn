@@ -131,6 +131,7 @@ position = Vector2(281, 61)
 player = NodePath("../Player")
 
 [node name="Finish" type="CanvasLayer" parent="World"]
+visible = false
 
 [node name="Background" type="MarginContainer" parent="World/Finish"]
 offset_left = -24.0
