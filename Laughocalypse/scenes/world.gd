@@ -3,7 +3,9 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Finish.hide()
+	setRandomMap()
 	$Player.health_changed.connect(_on_health_change)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -18,7 +20,16 @@ func _on_health_change(health):
 
 	$CanvasLayer/Health/ProgressBar.value = health
 	
-
+func setRandomMap():
+	var Maps = [$Gras,$Desert,$Ice,$Mountain]
+	var randomIndex = randi_range(0,3);
+	var randomMap = Maps[randomIndex];
+	
+	for i in Maps:
+		i.hide()
+	randomMap.show()
+	
+		
 func addEnemy():
 	var scene = load("res://scenes/enemies/enemy.tscn")
 	var instance = scene.instantiate()
