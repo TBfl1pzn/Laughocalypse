@@ -17,7 +17,12 @@ func time_left_to_live():
 	
 func _on_timer_timeout():
 	if $"../../".enemies == 0:
-		print(1)
+		waves = waves + 1
+
+		for i in waves:
+			$"../..".addEnemy()
+		
+		$"../WaveCounter/Wave".text = str(waves)
 	
 	
 	

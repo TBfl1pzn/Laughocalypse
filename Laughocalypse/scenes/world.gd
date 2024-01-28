@@ -33,6 +33,7 @@ func setRandomMap():
 	
 		
 func addEnemy():
+	$".".enemies = $".".enemies + 1
 	var scene = load("res://scenes/enemies/enemy.tscn")
 	var instance = scene.instantiate()
 	
