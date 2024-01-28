@@ -3,26 +3,28 @@
 [ext_resource type="Texture2D" uid="uid://ded88ie0jm0gs" path="res://assets/art/feather_projectile.png" id="1_crrnt"]
 [ext_resource type="Script" path="res://scenes/feather_attack.gd" id="1_fhf1w"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qofya"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e877p"]
 radius = 14.0
+height = 52.0
 
 [node name="FeatherAttack" type="Area2D" groups=["feather_attack"]]
 position = Vector2(8, 0)
 script = ExtResource("1_fhf1w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(13, -1.19209e-07)
 rotation = 1.5708
 scale = Vector2(0.0866722, 0.0859611)
 texture = ExtResource("1_crrnt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 0)
-shape = SubResource("CircleShape2D_qofya")
+position = Vector2(-1, -2)
+shape = SubResource("CapsuleShape2D_e877p")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
