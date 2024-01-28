@@ -4,6 +4,7 @@ extends Node2D
 func _ready():
 	$Finish.hide()
 	$Player.health_changed.connect(_on_health_change)
+	#$CanvasLayer/Health/ProgressBar.fill_mode = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

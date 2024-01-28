@@ -28,5 +28,5 @@ func _on_timer_timeout():
 		countdown = countdown - 1
 	
 func _process(delta):
-	label.text = "Next wave in %02d:%02d!" % time_left_to_live()
+	label.text = "Next wave in %02d:%02d" % time_left_to_live()
 	

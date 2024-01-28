@@ -41,11 +41,20 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
+[node name="Background" type="MarginContainer" parent="World/CanvasLayer"]
+offset_left = -13.0
+offset_right = 244.0
+offset_bottom = 14.0
+
+[node name="ColorRect" type="ColorRect" parent="World/CanvasLayer/Background"]
+layout_mode = 2
+color = Color(1, 0.447059, 1, 1)
+
 [node name="Counter" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 1.0
-offset_top = 2.0
+offset_top = 4.0
 offset_right = 45.0
-offset_bottom = 13.0
+offset_bottom = 15.0
 script = ExtResource("3_vj632")
 
 [node name="RichTextLabel" type="Label" parent="World/CanvasLayer/Counter"]
@@ -60,23 +69,24 @@ one_shot = true
 
 [node name="Health" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 199.0
-offset_top = 1.0
 offset_right = 239.0
-offset_bottom = 14.0
+offset_bottom = 13.0
+size_flags_vertical = 4
 
 [node name="ProgressBar" type="ProgressBar" parent="World/CanvasLayer/Health"]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.627451, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_rj5cy")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 step = 1.0
 value = 100.0
 
 [node name="WaveText" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 123.0
-offset_top = -12.0
+offset_top = -10.0
 offset_right = 178.0
-offset_bottom = 28.0
+offset_bottom = 30.0
 
 [node name="Label" type="Label" parent="World/CanvasLayer/WaveText"]
 layout_mode = 2
@@ -87,9 +97,9 @@ text = "Waves:"
 
 [node name="WaveCounter" type="MarginContainer" parent="World/CanvasLayer"]
 offset_left = 160.0
-offset_top = -12.0
+offset_top = -10.0
 offset_right = 210.0
-offset_bottom = 28.0
+offset_bottom = 30.0
 
 [node name="Wave" type="Label" parent="World/CanvasLayer/WaveCounter"]
 layout_mode = 2
@@ -102,6 +112,7 @@ position = Vector2(281, 61)
 player = NodePath("../Player")
 
 [node name="Finish" type="CanvasLayer" parent="World"]
+visible = false
 
 [node name="Background" type="MarginContainer" parent="World/Finish"]
 offset_left = -24.0
